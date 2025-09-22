@@ -4,239 +4,380 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antoniel de Sousa - Especialista em Storytelling</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome (Ícones) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
+        /* * ==============================================
+         * CONFIGURAÇÃO DE VARIÁVEIS DE COR (PALETA)
+         * ==============================================
+        */
         :root {
-            --political-primary: #2c3e50;
-            --political-secondary: #34495e;
-            --political-accent: #f39c12;
-            --political-accent-hover: #e67e22;
-            
-            --business-primary: #1d4ed8;
-            --business-secondary: #2563eb;
-            --business-accent: #34d399;
-            --business-accent-hover: #10b981;
+            --primary-bg: #121212;
+            --secondary-bg: #1E1E1E;
+            --box-bg: rgba(30, 30, 30, 0.7);
+            --accent: #8E24AA;
+            --accent-hover: #a132c2;
+            --text-primary: #F5F5F5;
+            --text-secondary: #A0A0A0;
+            --border-color: rgba(142, 36, 170, 0.3);
+        }
+        body.light-mode {
+            --primary-bg: #f7f7fa;
+            --secondary-bg: #fff;
+            --box-bg: rgba(255,255,255,0.7);
+            --accent: #8E24AA;
+            --accent-hover: #a132c2;
+            --text-primary: #232323;
+            --text-secondary: #666;
+            --border-color: rgba(142, 36, 170, 0.18);
+        }
+        .light-mode .header-glass {
+            background-color: rgba(255,255,255,0.7) !important;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .light-mode .toggle-switch-container {
+            background-color: #f3eafd;
+        }
+        .light-mode .service-card {
+            background-color: var(--box-bg);
+            color: var(--text-primary);
+        }
+        .light-mode .glowing-border {
+            border-color: var(--border-color);
+        }
+        .light-mode .text-white { color: var(--text-primary) !important; }
+        .light-mode .text-gray-400 { color: var(--text-secondary) !important; }
+        .light-mode .text-gray-300 { color: var(--text-secondary) !important; }
+        .light-mode .bg-accent { background-color: var(--accent) !important; }
+        .light-mode .bg-accent-hover { background-color: var(--accent-hover) !important; }
+        .light-mode .bg-white { background-color: #fff !important; }
+        .light-mode .text-gray-800 { color: #232323 !important; }
+        .light-mode .border { border-color: var(--border-color) !important; }
 
-            --text-dark: #1a1a1a;
-            --text-light: #7f8c8d;
-            --white: #ffffff;
-            --light-bg: #f8f9fa;
-            --border-color: #ecf0f1;
-            --success-color: #27ae60;
-            --shadow: rgba(44, 62, 80, 0.1);
+        /* * ==============================================
+         * ESTILOS GERAIS E TIPOGRAFIA
+         * ==============================================
+        */
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+
+        /* * ==============================================
+         * ANIMAÇÕES E EFEITOS DE UI/UX
+         * ==============================================
+        */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-gradient-animated {
+            background: linear-gradient(-45deg, var(--primary-bg), #2c1a3e, var(--primary-bg), #1c0f2a);
+            background-size: 400% 400%;
+            animation: gradientAnimation 20s ease infinite;
         }
         
-        /* Estilos Padrão (Político) */
-        .primary-bg { background-color: var(--political-primary); }
-        .secondary-bg { background-color: var(--political-secondary); }
-        .accent-bg { background-color: var(--political-accent); }
-        .accent-hover-bg:hover { background-color: var(--political-accent-hover); }
-        .accent-text { color: var(--political-accent); }
-        .accent-border { border-color: var(--political-accent); }
-        .accent-gradient { background: linear-gradient(90deg, var(--political-accent), var(--political-accent-hover)); }
-        .hero-gradient { background: linear-gradient(135deg, var(--political-primary) 0%, var(--political-secondary) 50%, var(--political-primary) 100%); }
-
-        /* Estilos Visão Empresarial */
-        body.business-view .primary-bg { background-color: var(--business-primary); }
-        body.business-view .secondary-bg { background-color: var(--business-secondary); }
-        body.business-view .accent-bg { background-color: var(--business-accent); }
-        body.business-view .accent-hover-bg:hover { background-color: var(--business-accent-hover); }
-        body.business-view .accent-text { color: var(--business-accent); }
-        body.business-view .accent-border { border-color: var(--business-accent); }
-        body.business-view .accent-gradient { background: linear-gradient(90deg, var(--business-accent), var(--business-accent-hover)); }
-        body.business-view .hero-gradient { background: linear-gradient(135deg, var(--business-primary) 0%, var(--business-secondary) 50%, var(--business-primary) 100%); }
-
-        .view-content {
-            display: none;
-        }
-
-        .view-content.active {
-            display: block;
-        }
-
-        .view-toggle-container {
-            transition: background-color 0.3s ease;
-        }
-
-        .toggle-btn {
-            transition: color 0.3s ease, background-color 0.3s ease;
-        }
-
-        .toggle-btn.active {
-            color: var(--text-dark);
-            background-color: var(--white);
-        }
-
-        .fade-in {
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .fade-in.visible {
+        .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
+        .glowing-border {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .glowing-border:hover {
+            border-color: rgba(142, 36, 170, 0.7);
+            box-shadow: 0 0 15px 5px rgba(142, 36, 170, 0.15);
+        }
+        
+        /* * ==============================================
+         * COMPONENTES DE UI PERSONALIZADOS
+         * ==============================================
+        */
+        .header-glass {
+            background-color: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .toggle-switch-container {
+            position: relative;
+            display: flex;
+            background-color: var(--secondary-bg);
+            border-radius: 9999px;
+            padding: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .toggle-btn {
+            position: relative;
+            z-index: 10;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.4s ease;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .toggle-btn.active {
+            color: var(--text-primary);
+        }
+
+        #glider {
+            position: absolute;
+            height: calc(100% - 8px);
+            background-color: var(--accent);
+            border-radius: 9999px;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            top: 4px;
+            left: 0;
+        }
+
+        .service-card {
+            background-color: var(--box-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .service-card .icon-container {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        }
+
+        #mais-trabalhos-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+
+        .view-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, display 0.5s;
+        }
+        .view-content.active {
+            display: block;
+            opacity: 1;
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800 antialiased">
+<body class="antialiased">
 
-    <!-- Header -->
-    <header class="primary-bg text-white p-4 fixed top-0 left-0 right-0 z-50 shadow-lg transition-colors duration-500">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Antoniel de Sousa</h1>
-            <div class="view-toggle-container bg-black bg-opacity-20 rounded-full p-1 flex items-center space-x-1">
-                <button id="political-btn" class="toggle-btn active text-white text-sm py-1 px-4 rounded-full" onclick="switchView('political')">
-                    <i class="fas fa-landmark mr-2"></i>Político
-                </button>
-                <button id="business-btn" class="toggle-btn text-white text-sm py-1 px-4 rounded-full" onclick="switchView('business')">
-                    <i class="fas fa-briefcase mr-2"></i>Empresarial
+    <!-- Header: Layout ajustado para ser responsivo em telas menores (mobile) -->
+    <header class="header-glass p-4 fixed top-0 left-0 right-0 z-50 transition-colors duration-500">
+        <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-2">
+            <div class="flex items-center gap-4 w-full sm:w-auto justify-between">
+                <h1 class="text-xl sm:text-2xl font-bold tracking-wider text-white dark:text-white">Antoniel de Sousa</h1>
+                <!-- Botão mobile para abrir menu -->
+                <button id="menu-toggle" class="sm:hidden text-2xl text-white focus:outline-none" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+            </div>
+            <!-- Menu de navegação -->
+            <ul id="main-nav" class="hidden sm:flex flex-row gap-6 items-center font-medium text-base transition-all duration-300">
+                <li><a href="#sobre" class="hover:underline">Sobre mim</a></li>
+                <li><a href="#servicos" class="hover:underline">Serviços</a></li>
+                <li><a href="#experiencia" class="hover:underline">Experiência</a></li>
+                <li><a href="#political-portfolio" class="hover:underline">Portfólio</a></li>
+                <li><a href="#mais-trabalhos" class="hover:underline">Mais Trabalhos</a></li>
+                <li><a href="#contato" class="hover:underline">Contato</a></li>
+            </ul>
+            <!-- Switch de visualização e modo -->
+            <div class="flex items-center gap-3 mt-3 sm:mt-0">
+                <div class="toggle-switch-container">
+                    <div id="glider"></div>
+                    <button id="political-btn" class="toggle-btn active" onclick="switchView('political')">
+                        <i class="fas fa-landmark mr-2 text-xs"></i>Político
+                    </button>
+                    <button id="business-btn" class="toggle-btn" onclick="switchView('business')">
+                        <i class="fas fa-briefcase mr-2 text-xs"></i>Empresarial
+                    </button>
+                </div>
+                <!-- Toggle Light/Dark -->
+                <button id="toggle-theme" class="ml-2 p-2 rounded-full border border-accent hover:bg-accent hover:text-white transition-colors text-xl bg-transparent" title="Alternar tema" aria-label="Alternar tema">
+                    <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
             </div>
-        </div>
+        </nav>
+        <!-- Menu mobile -->
+        <ul id="mobile-nav" class="sm:hidden fixed top-16 left-0 right-0 bg-[var(--primary-bg)] shadow-lg z-40 flex-col gap-4 px-8 py-6 font-medium text-base hidden rounded-b-2xl border-b border-[var(--border-color)]">
+            <li><a href="#sobre" class="block py-2 hover:underline">Sobre mim</a></li>
+            <li><a href="#servicos" class="block py-2 hover:underline">Serviços</a></li>
+            <li><a href="#experiencia" class="block py-2 hover:underline">Experiência</a></li>
+            <li><a href="#political-portfolio" class="block py-2 hover:underline">Portfólio</a></li>
+            <li><a href="#mais-trabalhos" class="block py-2 hover:underline">Mais Trabalhos</a></li>
+            <li><a href="#contato" class="block py-2 hover:underline">Contato</a></li>
+        </ul>
     </header>
 
     <main>
         <!-- Seção Herói -->
-        <section class="hero-gradient text-white min-h-screen flex items-center pt-20 transition-colors duration-500">
+        <section class="hero-gradient-animated text-white min-h-screen flex items-center justify-center pt-32 sm:pt-20">
             <div class="container mx-auto text-center px-6">
                 <!-- Conteúdo Político -->
-                <div id="political-hero" class="view-content active">
-                    <span class="accent-bg bg-opacity-20 accent-text text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border accent-border border-opacity-30">Especialista em Storytelling Político</span>
+                <div id="political-hero" class="view-content" data-view="political">
+                    <span class="bg-opacity-20 text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border border-opacity-30" style="color: var(--accent); background-color: rgba(142,36,170,0.1); border-color: var(--border-color);">Especialista em Storytelling Político</span>
                     <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Conectando Discursos e Votos</h2>
-                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 opacity-90">Transformo sua caminhada política em narrativas visuais que emocionam, engajam e geram resultados reais. Especialista em criar conteúdos que aproximam o político do eleitor com naturalidade e credibilidade.</p>
-                    <div class="bg-black bg-opacity-20 border-l-4 accent-border p-6 rounded-lg max-w-2xl mx-auto mb-10 backdrop-blur-sm">
-                        <p class="text-xl italic font-medium">"No jogo DEMOCRÁTICO, o Marketing Político é o elo entre DISCURSO e VOTO."</p>
-                    </div>
-                    <a href="#contato" class="accent-bg accent-hover-bg text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105">
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300">Transformo sua caminhada política em narrativas visuais que emocionam, engajam e geram resultados reais.</p>
+                    <a href="#contato" class="glowing-border bg-accent hover:bg-accent-hover text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105" style="background-color: var(--accent);">
                         <i class="fab fa-whatsapp mr-2"></i>Solicitar Orçamento
                     </a>
                 </div>
 
                 <!-- Conteúdo Empresarial -->
-                <div id="business-hero" class="view-content">
-                    <span class="accent-bg bg-opacity-20 accent-text text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border accent-border border-opacity-30">Especialista em Storytelling de Marca</span>
+                <div id="business-hero" class="view-content" data-view="business">
+                    <span class="bg-opacity-20 text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border border-opacity-30" style="color: var(--accent); background-color: rgba(142,36,170,0.1); border-color: var(--border-color);">Especialista em Storytelling de Marca</span>
                     <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Conectando Marcas e Clientes</h2>
-                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 opacity-90">Transformo a história da sua empresa em narrativas visuais que cativam, engajam e impulsionam o crescimento. Especialista em criar conteúdos que fortalecem sua marca com autenticidade e impacto.</p>
-                    <div class="bg-black bg-opacity-20 border-l-4 accent-border p-6 rounded-lg max-w-2xl mx-auto mb-10 backdrop-blur-sm">
-                        <p class="text-xl italic font-medium">"No mercado COMPETITIVO, o Storytelling é o elo entre MARCA e CLIENTE."</p>
-                    </div>
-                    <a href="#contato" class="accent-bg accent-hover-bg text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105">
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300">Transformo a história da sua empresa em narrativas visuais que cativam, engajam e impulsionam o crescimento.</p>
+                     <a href="#contato" class="glowing-border bg-accent hover:bg-accent-hover text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105" style="background-color: var(--accent);">
                         <i class="fas fa-handshake mr-2"></i>Vamos Conversar
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- Seção Sobre mim -->
+        <section id="sobre" class="py-20" style="background-color: var(--primary-bg);">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+                    <!-- Foto animada -->
+                    <div class="relative flex-shrink-0 mb-8 md:mb-0 reveal" style="transition-delay: 100ms;">
+                        <div class="w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden shadow-xl border-4 border-[var(--accent)] bg-gradient-to-br from-[var(--accent)]/30 to-[var(--primary-bg)] flex items-center justify-center group hover:scale-105 hover:shadow-2xl transition-all duration-500">
+                            <img src="midia/sobremim.jpeg" alt="Foto de Antoniel Sousa" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+                        </div>
+                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[var(--accent)] text-white text-xs font-semibold px-4 py-1 rounded-full shadow-lg opacity-90 animate-pulse select-none pointer-events-none">Storymaker e Vídeomaker Mobile</div>
+                    </div>
+                    <!-- Texto -->
+                    <div class="flex-1 bg-[var(--box-bg)] rounded-2xl glowing-border p-8 md:p-12 text-center md:text-left reveal" style="backdrop-filter: blur(6px);">
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--accent);">Sobre mim</h2>
+                        <p class="text-lg md:text-xl text-gray-300 mb-6">Sou Antoniel Sousa, especialista em mídias sociais e apaixonado por contar histórias autênticas através da captação de imagens. Com experiência em Storymaker e Vídeomaker Mobile, busco eternizar momentos únicos e criar conexões que fazem a diferença.</p>
+                        <p class="text-base md:text-lg text-gray-400 mb-4">Nesse meu portfólio, traduzo minha trajetória e meu compromisso em atuar de forma estratégica tanto no cenário político quanto no empresarial. Minha missão é transformar ideias em resultados concretos, unindo a força da gestão pública, pautada por valores, políticas eficazes e governança, com a visão corporativa, marcada por inovação, eficiência e responsabilidade social.</p>
+                        <p class="text-base md:text-lg text-gray-400 italic">Acredito que política e empreendedorismo não são caminhos distintos, mas complementares. Quando bem alinhados, têm o poder de gerar impacto positivo, impulsionar o desenvolvimento e construir soluções sustentáveis que beneficiam a sociedade, as instituições e o mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção de Serviços -->
-        <section id="servicos" class="py-20 bg-gray-50">
+        <section id="servicos" class="py-20" style="background-color: var(--secondary-bg);">
             <div class="container mx-auto px-6">
                 <!-- Conteúdo Político -->
-                <div id="political-services" class="view-content active">
-                    <div class="text-center mb-12">
-                        <h3 class="text-4xl font-bold primary-text">Serviços para sua Campanha</h3>
-                        <p class="text-gray-600 mt-2">Soluções completas para fortalecer sua presença digital e gerar conexão autêntica com o eleitor.</p>
-                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                <div id="political-services" class="view-content" data-view="political">
+                    <div class="text-center mb-16 reveal">
+                        <h3 class="text-4xl font-bold text-white">Serviços para sua Campanha</h3>
+                        <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Soluções completas para fortalecer sua presença digital e gerar conexão autêntica com o eleitor.</p>
+                        <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
                     </div>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Cards de Serviço Político -->
-                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
-                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-mobile-alt"></i></div>
-                            <h4 class="text-xl font-bold mb-2">Stories e Coberturas</h4>
-                            <p class="text-gray-600">Visitas, caminhadas, reuniões e bastidores capturados em tempo real com qualidade profissional.</p>
+                        <div class="service-card p-8 rounded-2xl text-center reveal">
+                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-mobile-alt"></i></div>
+                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Stories e Coberturas</h4>
+                            <p class="text-gray-400">Visitas, caminhadas, reuniões e bastidores capturados em tempo real com qualidade profissional.</p>
                         </div>
-                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
-                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-video"></i></div>
-                            <h4 class="text-xl font-bold mb-2">Reels e Vídeos Curtos</h4>
-                            <p class="text-gray-600">Conteúdo otimizado para Instagram e TikTok com estratégia de alcance e engajamento digital.</p>
+                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 150ms;">
+                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-video"></i></div>
+                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Reels e Vídeos Curtos</h4>
+                            <p class="text-gray-400">Conteúdo otimizado para Instagram e TikTok com estratégia de alcance e engajamento digital.</p>
                         </div>
-                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
-                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-bullseye"></i></div>
-                            <h4 class="text-xl font-bold mb-2">Vídeos Institucionais</h4>
-                            <p class="text-gray-600">Apresentação de propostas e trajetória com narrativa emocional e alta qualidade visual.</p>
+                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 300ms;">
+                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-bullseye"></i></div>
+                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Vídeos Institucionais</h4>
+                            <p class="text-gray-400">Apresentação de propostas e trajetória com narrativa emocional e alta qualidade visual.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Conteúdo Empresarial -->
-                <div id="business-services" class="view-content">
-                    <div class="text-center mb-12">
-                        <h3 class="text-4xl font-bold primary-text">Serviços para sua Empresa</h3>
-                        <p class="text-gray-600 mt-2">Soluções completas para fortalecer sua marca e criar uma conexão duradoura com seu público.</p>
-                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                <div id="business-services" class="view-content" data-view="business">
+                    <div class="text-center mb-16 reveal">
+                        <h3 class="text-4xl font-bold text-white">Serviços para sua Empresa</h3>
+                        <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Soluções completas para fortalecer sua marca e criar uma conexão duradoura com seu público.</p>
+                        <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
                     </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Cards de Serviço Empresarial -->
-                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
-                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-building"></i></div>
-                            <h4 class="text-xl font-bold mb-2">Vídeos Corporativos</h4>
-                            <p class="text-gray-600">Apresente sua empresa, cultura e valores de forma profissional e impactante.</p>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="service-card p-8 rounded-2xl text-center reveal">
+                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-building"></i></div>
+                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Vídeos Corporativos</h4>
+                            <p class="text-gray-400">Apresente sua empresa, cultura e valores de forma profissional e impactante.</p>
                         </div>
-                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
-                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-box-open"></i></div>
-                            <h4 class="text-xl font-bold mb-2">Vídeos de Produto</h4>
-                            <p class="text-gray-600">Demonstre seus produtos em ação, destacando benefícios e funcionalidades de forma criativa.</p>
+                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 150ms;">
+                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-box-open"></i></div>
+                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Vídeos de Produto</h4>
+                            <p class="text-gray-400">Demonstre seus produtos em ação, destacando benefícios e funcionalidades de forma criativa.</p>
                         </div>
-                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
-                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-calendar-check"></i></div>
-                            <h4 class="text-xl font-bold mb-2">Cobertura de Eventos</h4>
-                            <p class="text-gray-600">Registre lançamentos, conferências e eventos corporativos, gerando conteúdo valioso.</p>
+                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 300ms;">
+                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-calendar-check"></i></div>
+                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Cobertura de Eventos</h4>
+                            <p class="text-gray-400">Registre lançamentos, conferências e eventos corporativos, gerando conteúdo valioso.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Seção de Experiência -->
-        <section id="experiencia" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                 <!-- Conteúdo Político -->
-                <div id="political-experience" class="view-content active">
-                    <div class="text-center mb-12">
-                        <h3 class="text-4xl font-bold primary-text">Experiência Comprovada</h3>
-                        <p class="text-gray-600 mt-2">Resultados reais em campanhas vitoriosas.</p>
-                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
-                    </div>
-                    <div class="max-w-4xl mx-auto">
-                        <div class="bg-gray-50 p-8 rounded-lg shadow-lg border-l-4 accent-border">
-                            <h4 class="accent-text text-2xl font-bold mb-4">100% de Sucesso em Eleições Municipais</h4>
-                            <p class="text-gray-700 mb-6">Todos os candidatos que confiaram em nosso trabalho foram eleitos prefeitos, uma prova da eficiência da nossa estratégia de comunicação e produção de conteúdo.</p>
-                            <p class="font-semibold mb-2">Cidades de Atuação:</p>
-                            <div class="flex flex-wrap gap-4">
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Santa Rosa do Piauí</span>
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Colônia do Piauí</span>
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">São Miguel do Fidalgo</span>
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Paes Landim</span>
-                            </div>
+        
+        <!-- Seção Experiência -->
+        <section id="experiencia" class="py-20" style="background-color: var(--primary-bg);">
+            <div id="political-experience" class="view-content" data-view="political">
+                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="reveal">
+                        <h3 class="text-5xl font-extrabold mb-10 leading-tight">Experiência em<br>Campanhas Reais</h3>
+                        <div class="space-y-6">
+                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">Santa Rosa do Piauí</div><p class="text-gray-400">Cobertura política municipal, do prefeito Marlon Sousa – 2024.</p></div>
+                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">Colônia do Piauí</div><p class="text-gray-400">Cobertura da caminhada final de campanha do prefeito Selindo Mauro – 2024.</p></div>
+                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">São Miguel do Fidalgo</div><p class="text-gray-400">Cobertura da carreata de campanha do prefeito Dr. Erimar Soares – 2024.</p></div>
+                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">Paes Landim</div><p class="text-gray-400">Registros de posse e reuniões do prefeito Francinaldo Moraes – 2024/2025.</p></div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Conteúdo Empresarial -->
-                 <div id="business-experience" class="view-content">
-                    <div class="text-center mb-12">
-                        <h3 class="text-4xl font-bold primary-text">Cases de Sucesso</h3>
-                        <p class="text-gray-600 mt-2">Parcerias que geraram resultados e fortaleceram marcas.</p>
-                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                    <div class="flex justify-center reveal" style="transition-delay: 200ms;">
+                        <img src="midia/antoniel.png" alt="Foto de Antoniel de Sousa" class="rounded-2xl object-cover glowing-border aspect-[3/4] max-w-sm w-full" style="box-shadow: 0 8px 40px rgba(142,36,170,0.3);">
                     </div>
-                     <div class="max-w-4xl mx-auto">
-                        <div class="bg-gray-50 p-8 rounded-lg shadow-lg border-l-4 accent-border">
-                            <h4 class="accent-text text-2xl font-bold mb-4">Projetos de Alto Impacto</h4>
-                            <p class="text-gray-700 mb-6">Atuamos com empresas de diversos segmentos, ajudando a construir narrativas visuais que aumentam o engajamento, fortalecem a presença digital e impulsionam as vendas.</p>
-                            <p class="font-semibold mb-2">Áreas de Especialidade:</p>
-                            <div class="flex flex-wrap gap-4">
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Lançamento de Produtos</span>
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Marketing de Conteúdo</span>
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Cobertura de Eventos Corporativos</span>
-                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Branding e Posicionamento</span>
+                </div>
+            </div>
+            <div id="business-experience" class="view-content" data-view="business">
+                <div class="container mx-auto px-6 text-center">
+                    <h3 class="text-4xl font-bold mb-2 reveal">Cases de Sucesso</h3>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto reveal">Parcerias que geraram resultados e fortaleceram marcas.</p>
+                    <div class="w-24 h-1 mx-auto mt-4 rounded mb-12 reveal" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
+                    <div class="max-w-4xl mx-auto reveal">
+                        <div class="p-8 rounded-2xl border text-left" style="background-color: var(--box-bg); border-color: var(--border-color);">
+                            <h4 class="text-2xl font-bold mb-4" style="color: var(--accent);">Projetos de Alto Impacto</h4>
+                            <p class="text-gray-300 mb-6">Atuo com empresas de diversos segmentos, ajudando a construir narrativas visuais que aumentam o engajamento, fortalecem a presença digital e impulsionam as vendas.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Lançamento de Produtos</span>
+                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Marketing de Conteúdo</span>
+                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Eventos Corporativos</span>
+                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Branding e Posicionamento</span>
                             </div>
                         </div>
                     </div>
@@ -244,50 +385,153 @@
             </div>
         </section>
 
-
-        <!-- Seção de Portfólio (Vídeos) - Apenas Político -->
-        <section id="political-portfolio" class="view-content py-20 bg-gray-100 active">
+        <!-- Seção de Portfólio (Político e Empresarial) -->
+        <section id="political-portfolio" class="view-content py-20" data-view="political" style="background-color: var(--secondary-bg);">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-4xl font-bold primary-text">Portfólio em Vídeo</h3>
-                    <p class="text-gray-600 mt-2">Veja alguns exemplos reais do trabalho de Antoniel em diferentes cidades.</p>
-                    <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                <div class="text-center mb-16 reveal">
+                    <h3 class="text-4xl font-bold">Portfólio em Vídeo</h3>
+                    <p class="text-gray-400 mt-2">Veja exemplos reais do trabalho de Antoniel.</p>
+                    <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
                 </div>
-                <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-                    <!-- Santa Rosa do Piauí -->
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 accent-text text-center">Santa Rosa do Piauí</h4>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="reveal">
+                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">Santa Rosa do Piauí</h4>
                         <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.28.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.31.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.33.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.28.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.31.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.33.mp4"></video>
                         </div>
                     </div>
-                    <!-- Colônia do Piauí -->
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 accent-text text-center">Colônia do Piauí</h4>
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">Colônia do Piauí</h4>
                         <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.50.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.53.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.55.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.50.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.53.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.55.mp4"></video>
                         </div>
                     </div>
-                    <!-- São Miguel do Fidalgo -->
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 accent-text text-center">São Miguel do Fidalgo</h4>
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">São Miguel do Fidalgo</h4>
                         <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.18.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.21.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.23.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.18.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.21.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.23.mp4"></video>
                         </div>
                     </div>
-                    <!-- Paes Landim -->
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 accent-text text-center">Paes Landim</h4>
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">Paes Landim</h4>
                         <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.55.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.58.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.48.13.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.55.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.58.mp4"></video>
+                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.48.13.mp4"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Portfólio Empresarial (Destaques dos Stories) -->
+        <section id="business-portfolio" class="view-content py-20" data-view="business" style="background-color: var(--secondary-bg);">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h3 class="text-4xl font-bold">Destaques dos Stories</h3>
+                    <p class="text-gray-400 mt-2">Resumos criados por Antoniel para empresas.</p>
+                    <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
+                </div>
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="service-card p-8 rounded-2xl flex flex-col justify-between reveal">
+                        <div>
+                            <p class="text-gray-300 text-base mb-6" style="white-space: pre-line;">Atuei como Storymaker e Vídeomaker Mobile na cobertura oficial da Jornada TEAbraço Oeiras, registrando e transmitindo os principais momentos do evento em tempo real pelo Instagram. Desenvolvi conteúdos dinâmicos em formato de stories, com captação, edição e publicação imediata, garantindo agilidade na comunicação e engajamento do público durante toda a programação.</p>
+                        </div>
+                        <div class="mt-auto pt-4 text-right">
+                            <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDk1MDk2MjU0NTE1ODQ1?igsh=dTNrZmNhbDMxdGdm" target="_blank" class="hover:underline font-semibold flex items-center justify-end" style="color: var(--accent);">
+                                <i class="fas fa-link mr-2"></i>Cobertura – Jornada TEAbraço
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card p-8 rounded-2xl flex flex-col justify-between reveal" style="transition-delay: 200ms;">
+                        <div>
+                            <p class="text-gray-300 text-base mb-6" style="white-space: pre-line;">Na cobertura do evento Essenz, atuei como Storymaker e Vídeomaker Mobile, gerando conteúdos em tempo real para mostrar a essência e os destaques do evento. Fiz stories que envolviam captação de áudio e imagem, edição rápida e publicação imediata, mantendo o público engajado e conectado com tudo que rolava.</p>
+                        </div>
+                        <div class="mt-auto pt-4 text-right">
+                            <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQxOTYyMTEyNTMyMjQw?igsh=MTZoeGlpYTUzcWducg==" target="_blank" class="hover:underline font-semibold flex items-center justify-end" style="color: var(--accent);">
+                                <i class="fas fa-link mr-2"></i>Cobertura – Evento Essenz
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Seção "Mais Trabalhos" -->
+        <section id="mais-trabalhos" class="py-10">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <button id="toggle-mais-trabalhos" class="w-full flex justify-between items-center rounded-2xl px-8 py-5 mb-6 text-xl font-extrabold focus:outline-none transition-colors glowing-border shadow-lg hover:scale-105 hover:shadow-2xl" style="background: linear-gradient(90deg, var(--box-bg) 80%, var(--accent) 100%); color: var(--accent);">
+                        <span class="flex items-center gap-3"><i class="fas fa-folder-open text-2xl"></i>Ver Mais Trabalhos</span>
+                        <i id="icon-mais-trabalhos" class="fas fa-chevron-down transition-transform duration-500"></i>
+                    </button>
+                    <div id="mais-trabalhos-content" class="rounded-2xl p-0 border-0 overflow-hidden transition-all duration-700" style="background: none; border: none;">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- Conteúdo Político -->
+                            <div class="view-content" data-view="political">
+                                <div class="bg-[var(--box-bg)] glowing-border rounded-2xl p-7 flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] text-white text-2xl mr-3"><i class="fas fa-landmark"></i></div>
+                                        <h4 class="text-2xl font-bold" style="color: var(--accent);">Políticos</h4>
+                                    </div>
+                                    <ul class="space-y-2 text-base">
+                                        <li><a href="https://www.instagram.com/reel/C_7HLj_sKZL/?igsh=YzBqbnJ1MWZua3Iz" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 1</a></li>
+                                        <li><a href="https://www.instagram.com/reel/C__XaE9v7Kf/?igsh=MXU2a2trYnlucWMwOQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 2</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DALVf6ousih/?igsh=ZXNjOXJ0YzNnZ3hp" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 3</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DAMNMTuvmyK/?igsh=MTNhcDdiZTE3Znl0dA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 4</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DAe4v3IoowF/?igsh=MWlmanNjdnpjenQzMQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 5</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DAgd274u-I8/?igsh=MW54N2J6czQzMWljdA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 6</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DApRN3EI_Wj/?igsh=MXZyNXdmaG53Y252Zw==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 7</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DAr56_aIDC4/?igsh=MTEyZm50enhpYWtyZg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 8</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DAtEdH7umFv/?igsh=cGNkMDFjMTg4bmtz" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 9</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DAthfTbOPtw/?igsh=c3BsMmlxNnNyYzBy" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 10</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DESWduGOKhg/?igsh=czBiajA0Z3Nscmc0" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 11</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DETJnwyvo-j/?igsh=MWt5bHNicmM2a2U5YQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 12</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DEUy-vlOoz7/?igsh=N2JhZXd4NW02Zmg=" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 13</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DEfIT-5O89k/?igsh=NTRkMnplbzA3ZTI5" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 14</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DEf2yzGPa6F/?igsh=MXR2M2o3cnk0M2lneA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 15</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Conteúdo Empresarial -->
+                            <div class="view-content" data-view="business">
+                                <div class="bg-[var(--box-bg)] glowing-border rounded-2xl p-7 flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] text-white text-2xl mr-3"><i class="fas fa-briefcase"></i></div>
+                                        <h4 class="text-2xl font-bold" style="color: var(--accent);">Empresariais</h4>
+                                    </div>
+                                    <ul class="space-y-2 text-base">
+                                        <li><a href="https://www.instagram.com/reel/DAdxRtLuTvT/?igsh=MW8wd2ZqdTBreDdldA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 1</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DDUfm-wOUlU/?igsh=MTBscHhjdWZhOGF0Yg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 2</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DDsmR5tPaqs/?igsh=MWZha2F5Ynl6bTNm" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 3</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DEx-vnnuVha/?igsh=bGdoYXd4emNwamp3" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 4</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DHbHds-sjmA/?igsh=MXZ3bjg3a3lsOWU0dw==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 5</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DHwdrm6h3Ty/?igsh=cGFzb3FpZDJkN3Bl" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 6</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DIBzMinM1-B/?igsh=NnI5MjBsMDQxdDNl" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 7</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DIJdanPxPP3/?igsh=MWtyczV2NWwydWFuag==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 8</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DJ47lQhBUYj/?igsh=MWtvMDVhbjJidjBiMQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 9</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DKAq3Fqh_XD/?igsh=aTNuYm15b2swNWQy" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 10</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DG-sKnasDW9/?igsh=MXF4Mjk3YzQxNXhpbg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 11</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DHzCfl6Oy6O/?igsh=MTdleWs2YTUzbXU3eQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 12</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DH4M82kO3kk/?igsh=MjI3cTF1bTJ6M2li" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 13</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DH66sprpDm1/?igsh=YjIwa20zeDNtZmpt" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 14</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DJIatZWImOq/?igsh=MW5pdGFhOXRnY3JmYg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 15</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DJ7h8nqOKyO/?igsh=MWt3Y2J5eW9uc3pvMQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 16</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DKXBiz-OpQB/?igsh=NmwyMWh0eDViZmN0" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 17</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DLNy6BAumj7/?igsh=cjI2amFnZW9zbW55" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 18</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DMWCh9-PTsw/?igsh=MTYxd2F2OXV5ZmJ0cw==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 19</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DN8TmCbjgy9/?igsh=ajc5ejd6YXJwamlw" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 20</a></li>
+                                        <li><a href="https://www.instagram.com/reel/DOOcKzMjv-g/?igsh=MWtkdTk1cHFmdzhrZA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 21</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -295,75 +539,150 @@
         </section>
 
         <!-- Seção de Contato -->
-        <section id="contato" class="primary-bg text-white py-20 transition-colors duration-500">
+        <section id="contato" class="py-20 text-white" style="background-color: var(--primary-bg);">
             <div class="container mx-auto px-6 text-center">
-                 <h3 class="text-4xl font-bold">Vamos transformar sua comunicação?</h3>
-                 <p class="mt-4 mb-8 max-w-2xl mx-auto">Estou pronto para criar conteúdos que geram resultados. Entre em contato e solicite um orçamento personalizado.</p>
-                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
-                        <i class="fab fa-whatsapp text-4xl accent-text mb-3"></i>
+                 <h3 class="text-4xl font-bold reveal">Vamos transformar sua comunicação?</h3>
+                 <p class="mt-4 mb-12 max-w-2xl mx-auto text-gray-300 reveal">Entre em contato e solicite um orçamento personalizado.</p>
+                 <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                     <div class="p-6 rounded-2xl text-center glowing-border w-full md:w-auto reveal" style="background-color: var(--box-bg);">
+                        <i class="fab fa-whatsapp text-4xl mb-3" style="color: var(--accent);"></i>
                         <h4 class="font-bold text-lg">WhatsApp</h4>
-                        <a href="https://wa.me/5589994637481" target="_blank" class="hover:underline">(89) 99463-7481</a>
+                        <a href="https://wa.me/5589994637481" target="_blank" class="hover:underline text-gray-300">(89) 99463-7481</a>
                      </div>
-                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
-                        <i class="fab fa-instagram text-4xl accent-text mb-3"></i>
+                     <div class="p-6 rounded-2xl text-center glowing-border w-full md:w-auto reveal" style="background-color: var(--box-bg); transition-delay: 150ms;">
+                        <i class="fab fa-instagram text-4xl mb-3" style="color: var(--accent);"></i>
                         <h4 class="font-bold text-lg">Instagram</h4>
-                        <a href="https://instagram.com/antonielsousaas" target="_blank" class="hover:underline">@antonielsousaas</a>
+                        <a href="https://instagram.com/antonielsousaas" target="_blank" class="hover:underline text-gray-300">@antonielsousaas</a>
                      </div>
-                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
-                        <i class="fas fa-envelope text-4xl accent-text mb-3"></i>
+                     <div class="p-6 rounded-2xl text-center glowing-border w-full md:w-auto reveal" style="background-color: var(--box-bg); transition-delay: 300ms;">
+                        <i class="fas fa-envelope text-4xl mb-3" style="color: var(--accent);"></i>
                         <h4 class="font-bold text-lg">E-mail</h4>
-                        <a href="mailto:antonielsousa285@gmail.com" class="hover:underline">antonielsousa285@gmail.com</a>
+                        <a href="mailto:antonielsousa285@gmail.com" class="hover:underline text-gray-300">antonielsousa285@gmail.com</a>
                      </div>
                  </div>
             </div>
         </section>
     </main>
 
-    <footer class="secondary-bg text-white py-6 transition-colors duration-500">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 Antoniel de Sousa. Todos os direitos reservados.</p>
+    <footer class="text-white py-6" style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+        <div class="container mx-auto text-center text-gray-400 text-sm">
+            <p>&copy; 2025 Antoniel de Sousa. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        function switchView(view) {
-            // Alterna a classe no body
-            document.body.classList.toggle('business-view', view === 'business');
-
-            // Gerencia botões ativos
-            document.getElementById('political-btn').classList.toggle('active', view === 'political');
-            document.getElementById('business-btn').classList.toggle('active', view === 'business');
-
-            // Seleciona todos os conteúdos e alterna a visibilidade
-            const contents = document.querySelectorAll('.view-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegação responsiva
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const mobileNav = document.getElementById('mobile-nav');
+            menuToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+            // Fecha menu mobile ao clicar em um link
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.add('hidden');
+                });
             });
 
-            const activeContents = document.querySelectorAll(`#${view}-hero, #${view}-services, #${view}-experience, #${view}-portfolio`);
-            activeContents.forEach(content => {
-                content.classList.add('active');
-            });
-        }
-        
-        // Ativa a visão política por padrão ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => {
-            switchView('political');
+            // Função para atualizar o link do portfólio conforme a view
+            function updatePortfolioLinks(view) {
+                // Menu desktop
+                const mainNavPortfolio = mainNav.querySelector('a[href^="#political-portfolio"], a[href^="#business-portfolio"]');
+                if (mainNavPortfolio) {
+                    mainNavPortfolio.setAttribute('href', view === 'business' ? '#business-portfolio' : '#political-portfolio');
+                }
+                // Menu mobile
+                const mobileNavPortfolio = mobileNav.querySelector('a[href^="#political-portfolio"], a[href^="#business-portfolio"]');
+                if (mobileNavPortfolio) {
+                    mobileNavPortfolio.setAttribute('href', view === 'business' ? '#business-portfolio' : '#political-portfolio');
+                }
+            }
 
-            // Animação de fade-in ao rolar
+            // Glider e view
+            const glider = document.getElementById('glider');
+            const politicalBtn = document.getElementById('political-btn');
+            const businessBtn = document.getElementById('business-btn');
+            window.updateGliderPosition = (view) => {
+                const targetButton = view === 'political' ? politicalBtn : businessBtn;
+                if (targetButton) {
+                    const container = targetButton.parentElement;
+                    const targetOffsetLeft = targetButton.offsetLeft;
+                    const containerPaddingLeft = parseFloat(window.getComputedStyle(container).paddingLeft);
+                    glider.style.width = `${targetButton.offsetWidth}px`;
+                    glider.style.transform = `translateX(${targetOffsetLeft - containerPaddingLeft}px)`;
+                }
+            }
+            window.switchView = function(view) {
+                localStorage.setItem('antoniel_selected_view', view);
+                updateGliderPosition(view);
+                politicalBtn.classList.toggle('active', view === 'political');
+                businessBtn.classList.toggle('active', view === 'business');
+                document.querySelectorAll('.view-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                setTimeout(() => {
+                    document.querySelectorAll(`[data-view="${view}"]`).forEach(content => {
+                        content.classList.add('active');
+                    });
+                }, 50);
+                updatePortfolioLinks(view);
+            }
+            // Acordeão "Mais Trabalhos"
+            const accordionBtn = document.getElementById('toggle-mais-trabalhos');
+            const accordionContent = document.getElementById('mais-trabalhos-content');
+            const accordionIcon = document.getElementById('icon-mais-trabalhos');
+            if (accordionBtn) {
+                accordionBtn.addEventListener('click', function() {
+                    accordionIcon.classList.toggle('rotate-180');
+                    if (accordionContent.style.maxHeight) {
+                        accordionContent.style.maxHeight = null;
+                    } else {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    }
+                });
+            }
+            // Animação ao rolar
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, {
-                threshold: 0.1
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            // Tema light/dark
+            const themeBtn = document.getElementById('toggle-theme');
+            const themeIcon = document.getElementById('theme-icon');
+            function setTheme(mode) {
+                if (mode === 'light') {
+                    document.body.classList.add('light-mode');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    document.body.classList.remove('light-mode');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+                localStorage.setItem('antoniel_theme', mode);
+            }
+            themeBtn.addEventListener('click', function() {
+                const isLight = document.body.classList.contains('light-mode');
+                setTheme(isLight ? 'dark' : 'light');
             });
-
-            const elements = document.querySelectorAll('.service-card, .max-w-4xl > div');
-            elements.forEach(el => observer.observe(el));
+            // Carrega tema salvo
+            const savedTheme = localStorage.getItem('antoniel_theme') || 'dark';
+            setTheme(savedTheme);
+            // Carrega a view salva ou padrão
+            const savedView = localStorage.getItem('antoniel_selected_view') || 'political';
+            switchView(savedView);
+            updatePortfolioLinks(savedView);
+            // Ajusta glider ao redimensionar
+            window.addEventListener('resize', () => {
+                const currentView = localStorage.getItem('antoniel_selected_view') || 'political';
+                updateGliderPosition(currentView);
+            });
         });
     </script>
 </body>

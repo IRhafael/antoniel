@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antoniel de Sousa - Especialista em Storytelling</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --political-primary: #2c3e50;
+            --political-secondary: #34495e;
+            --political-accent: #f39c12;
+            --political-accent-hover: #e67e22;
+            
+            --business-primary: #1d4ed8;
+            --business-secondary: #2563eb;
+            --business-accent: #34d399;
+            --business-accent-hover: #10b981;
+
+            --text-dark: #1a1a1a;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --border-color: #ecf0f1;
+            --success-color: #27ae60;
+            --shadow: rgba(44, 62, 80, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* Estilos Padrão (Político) */
+        .primary-bg { background-color: var(--political-primary); }
+        .secondary-bg { background-color: var(--political-secondary); }
+        .accent-bg { background-color: var(--political-accent); }
+        .accent-hover-bg:hover { background-color: var(--political-accent-hover); }
+        .accent-text { color: var(--political-accent); }
+        .accent-border { border-color: var(--political-accent); }
+        .accent-gradient { background: linear-gradient(90deg, var(--political-accent), var(--political-accent-hover)); }
+        .hero-gradient { background: linear-gradient(135deg, var(--political-primary) 0%, var(--political-secondary) 50%, var(--political-primary) 100%); }
+
+        /* Estilos Visão Empresarial */
+        body.business-view .primary-bg { background-color: var(--business-primary); }
+        body.business-view .secondary-bg { background-color: var(--business-secondary); }
+        body.business-view .accent-bg { background-color: var(--business-accent); }
+        body.business-view .accent-hover-bg:hover { background-color: var(--business-accent-hover); }
+        body.business-view .accent-text { color: var(--business-accent); }
+        body.business-view .accent-border { border-color: var(--business-accent); }
+        body.business-view .accent-gradient { background: linear-gradient(90deg, var(--business-accent), var(--business-accent-hover)); }
+        body.business-view .hero-gradient { background: linear-gradient(135deg, var(--business-primary) 0%, var(--business-secondary) 50%, var(--business-primary) 100%); }
+
+        .view-content {
+            display: none;
+        }
+
+        .view-content.active {
+            display: block;
+        }
+
+        .view-toggle-container {
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-btn {
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header class="primary-bg text-white p-4 fixed top-0 left-0 right-0 z-50 shadow-lg transition-colors duration-500">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Antoniel de Sousa</h1>
+            <div class="view-toggle-container bg-black bg-opacity-20 rounded-full p-1 flex items-center space-x-1">
+                <button id="political-btn" class="toggle-btn active text-white text-sm py-1 px-4 rounded-full" onclick="switchView('political')">
+                    <i class="fas fa-landmark mr-2"></i>Político
+                </button>
+                <button id="business-btn" class="toggle-btn text-white text-sm py-1 px-4 rounded-full" onclick="switchView('business')">
+                    <i class="fas fa-briefcase mr-2"></i>Empresarial
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Herói -->
+        <section class="hero-gradient text-white min-h-screen flex items-center pt-20 transition-colors duration-500">
+            <div class="container mx-auto text-center px-6">
+                <!-- Conteúdo Político -->
+                <div id="political-hero" class="view-content active">
+                    <span class="accent-bg bg-opacity-20 accent-text text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border accent-border border-opacity-30">Especialista em Storytelling Político</span>
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Conectando Discursos e Votos</h2>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 opacity-90">Transformo sua caminhada política em narrativas visuais que emocionam, engajam e geram resultados reais. Especialista em criar conteúdos que aproximam o político do eleitor com naturalidade e credibilidade.</p>
+                    <div class="bg-black bg-opacity-20 border-l-4 accent-border p-6 rounded-lg max-w-2xl mx-auto mb-10 backdrop-blur-sm">
+                        <p class="text-xl italic font-medium">"No jogo DEMOCRÁTICO, o Marketing Político é o elo entre DISCURSO e VOTO."</p>
+                    </div>
+                    <a href="#contato" class="accent-bg accent-hover-bg text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105">
+                        <i class="fab fa-whatsapp mr-2"></i>Solicitar Orçamento
+                    </a>
+                </div>
+
+                <!-- Conteúdo Empresarial -->
+                <div id="business-hero" class="view-content">
+                    <span class="accent-bg bg-opacity-20 accent-text text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border accent-border border-opacity-30">Especialista em Storytelling de Marca</span>
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Conectando Marcas e Clientes</h2>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 opacity-90">Transformo a história da sua empresa em narrativas visuais que cativam, engajam e impulsionam o crescimento. Especialista em criar conteúdos que fortalecem sua marca com autenticidade e impacto.</p>
+                    <div class="bg-black bg-opacity-20 border-l-4 accent-border p-6 rounded-lg max-w-2xl mx-auto mb-10 backdrop-blur-sm">
+                        <p class="text-xl italic font-medium">"No mercado COMPETITIVO, o Storytelling é o elo entre MARCA e CLIENTE."</p>
+                    </div>
+                    <a href="#contato" class="accent-bg accent-hover-bg text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105">
+                        <i class="fas fa-handshake mr-2"></i>Vamos Conversar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="servicos" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <!-- Conteúdo Político -->
+                <div id="political-services" class="view-content active">
+                    <div class="text-center mb-12">
+                        <h3 class="text-4xl font-bold primary-text">Serviços para sua Campanha</h3>
+                        <p class="text-gray-600 mt-2">Soluções completas para fortalecer sua presença digital e gerar conexão autêntica com o eleitor.</p>
+                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Cards de Serviço Político -->
+                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-mobile-alt"></i></div>
+                            <h4 class="text-xl font-bold mb-2">Stories e Coberturas</h4>
+                            <p class="text-gray-600">Visitas, caminhadas, reuniões e bastidores capturados em tempo real com qualidade profissional.</p>
+                        </div>
+                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-video"></i></div>
+                            <h4 class="text-xl font-bold mb-2">Reels e Vídeos Curtos</h4>
+                            <p class="text-gray-600">Conteúdo otimizado para Instagram e TikTok com estratégia de alcance e engajamento digital.</p>
+                        </div>
+                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-bullseye"></i></div>
+                            <h4 class="text-xl font-bold mb-2">Vídeos Institucionais</h4>
+                            <p class="text-gray-600">Apresentação de propostas e trajetória com narrativa emocional e alta qualidade visual.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Empresarial -->
+                <div id="business-services" class="view-content">
+                    <div class="text-center mb-12">
+                        <h3 class="text-4xl font-bold primary-text">Serviços para sua Empresa</h3>
+                        <p class="text-gray-600 mt-2">Soluções completas para fortalecer sua marca e criar uma conexão duradoura com seu público.</p>
+                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Cards de Serviço Empresarial -->
+                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-building"></i></div>
+                            <h4 class="text-xl font-bold mb-2">Vídeos Corporativos</h4>
+                            <p class="text-gray-600">Apresente sua empresa, cultura e valores de forma profissional e impactante.</p>
+                        </div>
+                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-box-open"></i></div>
+                            <h4 class="text-xl font-bold mb-2">Vídeos de Produto</h4>
+                            <p class="text-gray-600">Demonstre seus produtos em ação, destacando benefícios e funcionalidades de forma criativa.</p>
+                        </div>
+                        <div class="service-card bg-white p-8 rounded-lg shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                            <div class="accent-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-calendar-check"></i></div>
+                            <h4 class="text-xl font-bold mb-2">Cobertura de Eventos</h4>
+                            <p class="text-gray-600">Registre lançamentos, conferências e eventos corporativos, gerando conteúdo valioso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Experiência -->
+        <section id="experiencia" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                 <!-- Conteúdo Político -->
+                <div id="political-experience" class="view-content active">
+                    <div class="text-center mb-12">
+                        <h3 class="text-4xl font-bold primary-text">Experiência Comprovada</h3>
+                        <p class="text-gray-600 mt-2">Resultados reais em campanhas vitoriosas.</p>
+                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                    </div>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-lg border-l-4 accent-border">
+                            <h4 class="accent-text text-2xl font-bold mb-4">100% de Sucesso em Eleições Municipais</h4>
+                            <p class="text-gray-700 mb-6">Todos os candidatos que confiaram em nosso trabalho foram eleitos prefeitos, uma prova da eficiência da nossa estratégia de comunicação e produção de conteúdo.</p>
+                            <p class="font-semibold mb-2">Cidades de Atuação:</p>
+                            <div class="flex flex-wrap gap-4">
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Santa Rosa do Piauí</span>
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Colônia do Piauí</span>
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">São Miguel do Fidalgo</span>
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Paes Landim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Empresarial -->
+                 <div id="business-experience" class="view-content">
+                    <div class="text-center mb-12">
+                        <h3 class="text-4xl font-bold primary-text">Cases de Sucesso</h3>
+                        <p class="text-gray-600 mt-2">Parcerias que geraram resultados e fortaleceram marcas.</p>
+                        <div class="accent-gradient w-24 h-1 mx-auto mt-4 rounded"></div>
+                    </div>
+                     <div class="max-w-4xl mx-auto">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-lg border-l-4 accent-border">
+                            <h4 class="accent-text text-2xl font-bold mb-4">Projetos de Alto Impacto</h4>
+                            <p class="text-gray-700 mb-6">Atuamos com empresas de diversos segmentos, ajudando a construir narrativas visuais que aumentam o engajamento, fortalecem a presença digital e impulsionam as vendas.</p>
+                            <p class="font-semibold mb-2">Áreas de Especialidade:</p>
+                            <div class="flex flex-wrap gap-4">
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Lançamento de Produtos</span>
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Marketing de Conteúdo</span>
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Cobertura de Eventos Corporativos</span>
+                                <span class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">Branding e Posicionamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Seção de Contato -->
+        <section id="contato" class="primary-bg text-white py-20 transition-colors duration-500">
+            <div class="container mx-auto px-6 text-center">
+                 <h3 class="text-4xl font-bold">Vamos transformar sua comunicação?</h3>
+                 <p class="mt-4 mb-8 max-w-2xl mx-auto">Estou pronto para criar conteúdos que geram resultados. Entre em contato e solicite um orçamento personalizado.</p>
+                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fab fa-whatsapp text-4xl accent-text mb-3"></i>
+                        <h4 class="font-bold text-lg">WhatsApp</h4>
+                        <a href="https://wa.me/5589994637481" target="_blank" class="hover:underline">(89) 99463-7481</a>
+                     </div>
+                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fab fa-instagram text-4xl accent-text mb-3"></i>
+                        <h4 class="font-bold text-lg">Instagram</h4>
+                        <a href="https://instagram.com/antonielsousaas" target="_blank" class="hover:underline">@antonielsousaas</a>
+                     </div>
+                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fas fa-envelope text-4xl accent-text mb-3"></i>
+                        <h4 class="font-bold text-lg">E-mail</h4>
+                        <a href="mailto:antonielsousa285@gmail.com" class="hover:underline">antonielsousa285@gmail.com</a>
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="secondary-bg text-white py-6 transition-colors duration-500">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Antoniel de Sousa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchView(view) {
+            // Alterna a classe no body
+            document.body.classList.toggle('business-view', view === 'business');
+
+            // Gerencia botões ativos
+            document.getElementById('political-btn').classList.toggle('active', view === 'political');
+            document.getElementById('business-btn').classList.toggle('active', view === 'business');
+
+            // Seleciona todos os conteúdos e alterna a visibilidade
+            const contents = document.querySelectorAll('.view-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const activeContents = document.querySelectorAll(`#${view}-hero, #${view}-services, #${view}-experience`);
+             activeContents.forEach(content => {
+                content.classList.add('active');
+            });
+        }
+        
+        // Ativa a visão política por padrão ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            switchView('political');
+
+            // Animação de fade-in ao rolar
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elements = document.querySelectorAll('.service-card, .max-w-4xl > div');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

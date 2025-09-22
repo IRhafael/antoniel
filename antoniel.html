@@ -245,8 +245,8 @@
         </section>
 
 
-        <!-- Seção de Portfólio (Vídeos) -->
-        <section id="portfolio" class="py-20 bg-gray-100">
+        <!-- Seção de Portfólio (Vídeos) - Apenas Político -->
+        <section id="political-portfolio" class="view-content py-20 bg-gray-100 active">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h3 class="text-4xl font-bold primary-text">Portfólio em Vídeo</h3>
@@ -279,11 +279,6 @@
                             <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.18.mp4"></video>
                             <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.21.mp4"></video>
                             <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.23.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.26.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.29 (1).mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.29.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.31.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.34.mp4"></video>
                         </div>
                     </div>
                     <!-- Paes Landim -->
@@ -346,8 +341,8 @@
                 content.classList.remove('active');
             });
 
-            const activeContents = document.querySelectorAll(`#${view}-hero, #${view}-services, #${view}-experience`);
-             activeContents.forEach(content => {
+            const activeContents = document.querySelectorAll(`#${view}-hero, #${view}-services, #${view}-experience, #${view}-portfolio`);
+            activeContents.forEach(content => {
                 content.classList.add('active');
             });
         }

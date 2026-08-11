@@ -1076,7 +1076,7 @@
         }
 
         /* ============================================================
-   REELS (previews do Instagram)
+   REELS (Rogério Castro / Outros trabalhos)
    ============================================================ */
         .reels {
             display: grid;
@@ -1096,15 +1096,42 @@
         .reel-frame {
             position: relative;
             display: block;
-            aspect-ratio: 1/1.78;
+            width: 100%;
+            aspect-ratio: var(--ar, 9/16);
             overflow: hidden;
             background: var(--bg-2);
             border: 1px solid var(--line-soft);
             transition: border-color .5s var(--ease);
         }
 
-        .reel:hover .reel-frame {
+        .reel-frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .55;
+            background: repeating-linear-gradient(135deg, var(--line-soft) 0 1px, transparent 1px 10px);
+        }
+
+        .reel-frame:hover {
             border-color: var(--accent)
+        }
+
+        .reel-frame video,
+        .reel-cover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(.35) contrast(1.04);
+            transition: filter .7s var(--ease), transform .9s var(--ease);
+        }
+
+        .reel-frame:hover video,
+        .reel-frame:hover .reel-cover {
+            filter: none;
+            transform: scale(1.03)
         }
 
         .reel-frame iframe {
@@ -1113,31 +1140,23 @@
             width: 100%;
             height: calc(100% + 58px);
             border: 0;
-            display: block;
-            opacity: 0;
-            transition: opacity .8s var(--ease);
-        }
-
-        .reel-frame iframe.is-ready {
-            opacity: 1
-        }
-
-        .reel-cover {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover
+            display: block
         }
 
         .reel-ph {
             position: absolute;
             inset: 0;
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
             justify-content: space-between;
             padding: clamp(.7rem, 1.6vw, 1rem);
             pointer-events: none;
+            transition: opacity .6s var(--ease);
+        }
+
+        .reel-frame.is-preview .reel-ph,
+        .reel-frame.is-preview .reel-play {
+            opacity: 0
         }
 
         .reel-ph .idx {
@@ -1147,10 +1166,19 @@
         }
 
         .reel-ph .tag {
-            font-size: .6rem;
+            font-size: .58rem;
             letter-spacing: .2em;
             text-transform: uppercase;
             color: var(--fg-dim)
+        }
+
+        .reel-frame.has-media .reel-ph {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .45), transparent 40%, transparent 60%, rgba(0, 0, 0, .45))
+        }
+
+        .reel-frame.has-media .reel-ph .idx,
+        .reel-frame.has-media .reel-ph .tag {
+            color: #fff
         }
 
         .reel-play {
@@ -1158,20 +1186,27 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border: 1px solid var(--line);
             border-radius: 50%;
             display: grid;
             place-items: center;
             color: var(--fg-dim);
-            transition: border-color .5s var(--ease), color .5s var(--ease), transform .5s var(--ease);
+            pointer-events: none;
+            transition: opacity .5s var(--ease), border-color .5s var(--ease), color .5s var(--ease), background-color .5s var(--ease), transform .5s var(--ease);
         }
 
-        .reel:hover .reel-play {
+        .reel-frame:hover .reel-play {
             border-color: var(--accent);
-            color: var(--accent);
-            transform: translate(-50%, -50%) scale(1.08)
+            background: var(--accent);
+            color: #fff;
+            transform: translate(-50%, -50%) scale(1.06)
+        }
+
+        .reel-frame.has-media .reel-play {
+            border-color: rgba(255, 255, 255, .55);
+            color: #fff
         }
 
         .reel-play svg {
@@ -1989,60 +2024,59 @@
 
                 <div class="reels reveal" style="--d:80ms">
                     <figure class="reel">
-                        <div class="reel-frame" data-reel="DSum5qVgKPI">
-                            <div class="reel-ph">
-                                <span class="idx">01</span>
-                                <span class="tag">Reel</span>
-                            </div>
+                        <a class="reel-frame"
+                            href="https://www.instagram.com/reel/DSum5qVgKPI/?igsh=MTN1aDhzODduaXBrYg==" target="_blank"
+                            rel="noopener" data-reel="DSum5qVgKPI" data-idx="01" data-label="Rogério Castro"
+                            aria-label="Reel 01 — Rogério Castro">
+                            <span class="reel-ph"><span class="idx">01</span><span class="tag">Reel</span></span>
                             <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M8 5v14l11-7z" />
                                 </svg></span>
-                        </div>
+                        </a>
                         <a class="reel-cap" href="https://www.instagram.com/reel/DSum5qVgKPI/?igsh=MTN1aDhzODduaXBrYg=="
                             target="_blank" rel="noopener">
                             <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                         </a>
                     </figure>
                     <figure class="reel">
-                        <div class="reel-frame" data-reel="DSxdEA6ACQb">
-                            <div class="reel-ph">
-                                <span class="idx">02</span>
-                                <span class="tag">Reel</span>
-                            </div>
+                        <a class="reel-frame"
+                            href="https://www.instagram.com/reel/DSxdEA6ACQb/?igsh=MXVmMXp0ZWF2d2UwZg==" target="_blank"
+                            rel="noopener" data-reel="DSxdEA6ACQb" data-idx="02" data-label="Rogério Castro"
+                            aria-label="Reel 02 — Rogério Castro">
+                            <span class="reel-ph"><span class="idx">02</span><span class="tag">Reel</span></span>
                             <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M8 5v14l11-7z" />
                                 </svg></span>
-                        </div>
+                        </a>
                         <a class="reel-cap" href="https://www.instagram.com/reel/DSxdEA6ACQb/?igsh=MXVmMXp0ZWF2d2UwZg=="
                             target="_blank" rel="noopener">
                             <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                         </a>
                     </figure>
                     <figure class="reel">
-                        <div class="reel-frame" data-reel="DSz_PrkgAKc">
-                            <div class="reel-ph">
-                                <span class="idx">03</span>
-                                <span class="tag">Reel</span>
-                            </div>
+                        <a class="reel-frame"
+                            href="https://www.instagram.com/reel/DSz_PrkgAKc/?igsh=MXJsdWEybGVzdWd3ZQ==" target="_blank"
+                            rel="noopener" data-reel="DSz_PrkgAKc" data-idx="03" data-label="Rogério Castro"
+                            aria-label="Reel 03 — Rogério Castro">
+                            <span class="reel-ph"><span class="idx">03</span><span class="tag">Reel</span></span>
                             <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M8 5v14l11-7z" />
                                 </svg></span>
-                        </div>
+                        </a>
                         <a class="reel-cap" href="https://www.instagram.com/reel/DSz_PrkgAKc/?igsh=MXJsdWEybGVzdWd3ZQ=="
                             target="_blank" rel="noopener">
                             <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                         </a>
                     </figure>
                     <figure class="reel">
-                        <div class="reel-frame" data-reel="DS2t-_MADm6">
-                            <div class="reel-ph">
-                                <span class="idx">04</span>
-                                <span class="tag">Reel</span>
-                            </div>
+                        <a class="reel-frame" href="https://www.instagram.com/reel/DS2t-_MADm6/?igsh=a3pkYzFnbHAyczk3"
+                            target="_blank" rel="noopener" data-reel="DS2t-_MADm6" data-idx="04"
+                            data-label="Rogério Castro" aria-label="Reel 04 — Rogério Castro">
+                            <span class="reel-ph"><span class="idx">04</span><span class="tag">Reel</span></span>
                             <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M8 5v14l11-7z" />
                                 </svg></span>
-                        </div>
+                        </a>
                         <a class="reel-cap" href="https://www.instagram.com/reel/DS2t-_MADm6/?igsh=a3pkYzFnbHAyczk3"
                             target="_blank" rel="noopener">
                             <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
@@ -2069,30 +2103,30 @@
                 <div class="acc-panel" id="acc-panel">
                     <div class="reels reels-sm">
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="C_7HLj_sKZL">
-                                <div class="reel-ph">
-                                    <span class="idx">01</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/C_7HLj_sKZL/?igsh=YzBqbnJ1MWZua3Iz" target="_blank"
+                                rel="noopener" data-reel="C_7HLj_sKZL" data-idx="01" data-label="Outros trabalhos"
+                                aria-label="Reel 01 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">01</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/C_7HLj_sKZL/?igsh=YzBqbnJ1MWZua3Iz"
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="C__XaE9v7Kf">
-                                <div class="reel-ph">
-                                    <span class="idx">02</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/C__XaE9v7Kf/?igsh=MXU2a2trYnlucWMwOQ=="
+                                target="_blank" rel="noopener" data-reel="C__XaE9v7Kf" data-idx="02"
+                                data-label="Outros trabalhos" aria-label="Reel 02 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">02</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/C__XaE9v7Kf/?igsh=MXU2a2trYnlucWMwOQ=="
                                 target="_blank" rel="noopener">
@@ -2100,30 +2134,30 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DALVf6ousih">
-                                <div class="reel-ph">
-                                    <span class="idx">03</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DALVf6ousih/?igsh=ZXNjOXJ0YzNnZ3hp" target="_blank"
+                                rel="noopener" data-reel="DALVf6ousih" data-idx="03" data-label="Outros trabalhos"
+                                aria-label="Reel 03 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">03</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/DALVf6ousih/?igsh=ZXNjOXJ0YzNnZ3hp"
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DAMNMTuvmyK">
-                                <div class="reel-ph">
-                                    <span class="idx">04</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DAMNMTuvmyK/?igsh=MTNhcDdiZTE3Znl0dA=="
+                                target="_blank" rel="noopener" data-reel="DAMNMTuvmyK" data-idx="04"
+                                data-label="Outros trabalhos" aria-label="Reel 04 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">04</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DAMNMTuvmyK/?igsh=MTNhcDdiZTE3Znl0dA=="
                                 target="_blank" rel="noopener">
@@ -2131,15 +2165,15 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DAe4v3IoowF">
-                                <div class="reel-ph">
-                                    <span class="idx">05</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DAe4v3IoowF/?igsh=MWlmanNjdnpjenQzMQ=="
+                                target="_blank" rel="noopener" data-reel="DAe4v3IoowF" data-idx="05"
+                                data-label="Outros trabalhos" aria-label="Reel 05 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">05</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DAe4v3IoowF/?igsh=MWlmanNjdnpjenQzMQ=="
                                 target="_blank" rel="noopener">
@@ -2147,15 +2181,15 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DAgd274u-I8">
-                                <div class="reel-ph">
-                                    <span class="idx">06</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DAgd274u-I8/?igsh=MW54N2J6czQzMWljdA=="
+                                target="_blank" rel="noopener" data-reel="DAgd274u-I8" data-idx="06"
+                                data-label="Outros trabalhos" aria-label="Reel 06 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">06</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DAgd274u-I8/?igsh=MW54N2J6czQzMWljdA=="
                                 target="_blank" rel="noopener">
@@ -2163,15 +2197,15 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DApRN3EI_Wj">
-                                <div class="reel-ph">
-                                    <span class="idx">07</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DApRN3EI_Wj/?igsh=MXZyNXdmaG53Y252Zw=="
+                                target="_blank" rel="noopener" data-reel="DApRN3EI_Wj" data-idx="07"
+                                data-label="Outros trabalhos" aria-label="Reel 07 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">07</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DApRN3EI_Wj/?igsh=MXZyNXdmaG53Y252Zw=="
                                 target="_blank" rel="noopener">
@@ -2179,15 +2213,15 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DAr56_aIDC4">
-                                <div class="reel-ph">
-                                    <span class="idx">08</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DAr56_aIDC4/?igsh=MTEyZm50enhpYWtyZg=="
+                                target="_blank" rel="noopener" data-reel="DAr56_aIDC4" data-idx="08"
+                                data-label="Outros trabalhos" aria-label="Reel 08 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">08</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DAr56_aIDC4/?igsh=MTEyZm50enhpYWtyZg=="
                                 target="_blank" rel="noopener">
@@ -2195,60 +2229,60 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DAtEdH7umFv">
-                                <div class="reel-ph">
-                                    <span class="idx">09</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DAtEdH7umFv/?igsh=cGNkMDFjMTg4bmtz" target="_blank"
+                                rel="noopener" data-reel="DAtEdH7umFv" data-idx="09" data-label="Outros trabalhos"
+                                aria-label="Reel 09 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">09</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/DAtEdH7umFv/?igsh=cGNkMDFjMTg4bmtz"
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DAthfTbOPtw">
-                                <div class="reel-ph">
-                                    <span class="idx">10</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DAthfTbOPtw/?igsh=c3BsMmlxNnNyYzBy" target="_blank"
+                                rel="noopener" data-reel="DAthfTbOPtw" data-idx="10" data-label="Outros trabalhos"
+                                aria-label="Reel 10 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">10</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/DAthfTbOPtw/?igsh=c3BsMmlxNnNyYzBy"
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DESWduGOKhg">
-                                <div class="reel-ph">
-                                    <span class="idx">11</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DESWduGOKhg/?igsh=czBiajA0Z3Nscmc0" target="_blank"
+                                rel="noopener" data-reel="DESWduGOKhg" data-idx="11" data-label="Outros trabalhos"
+                                aria-label="Reel 11 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">11</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/DESWduGOKhg/?igsh=czBiajA0Z3Nscmc0"
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DETJnwyvo-j">
-                                <div class="reel-ph">
-                                    <span class="idx">12</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DETJnwyvo-j/?igsh=MWt5bHNicmM2a2U5YQ=="
+                                target="_blank" rel="noopener" data-reel="DETJnwyvo-j" data-idx="12"
+                                data-label="Outros trabalhos" aria-label="Reel 12 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">12</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DETJnwyvo-j/?igsh=MWt5bHNicmM2a2U5YQ=="
                                 target="_blank" rel="noopener">
@@ -2256,45 +2290,45 @@
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DEUy-vlOoz7">
-                                <div class="reel-ph">
-                                    <span class="idx">13</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DEUy-vlOoz7/?igsh=N2JhZXd4NW02Zmg=" target="_blank"
+                                rel="noopener" data-reel="DEUy-vlOoz7" data-idx="13" data-label="Outros trabalhos"
+                                aria-label="Reel 13 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">13</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/DEUy-vlOoz7/?igsh=N2JhZXd4NW02Zmg="
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DEfIT-5O89k">
-                                <div class="reel-ph">
-                                    <span class="idx">14</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DEfIT-5O89k/?igsh=NTRkMnplbzA3ZTI5" target="_blank"
+                                rel="noopener" data-reel="DEfIT-5O89k" data-idx="14" data-label="Outros trabalhos"
+                                aria-label="Reel 14 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">14</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap" href="https://www.instagram.com/reel/DEfIT-5O89k/?igsh=NTRkMnplbzA3ZTI5"
                                 target="_blank" rel="noopener">
                                 <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
                         </figure>
                         <figure class="reel">
-                            <div class="reel-frame" data-reel="DEf2yzGPa6F">
-                                <div class="reel-ph">
-                                    <span class="idx">15</span>
-                                    <span class="tag">Reel</span>
-                                </div>
+                            <a class="reel-frame"
+                                href="https://www.instagram.com/reel/DEf2yzGPa6F/?igsh=MXR2M2o3cnk0M2lneA=="
+                                target="_blank" rel="noopener" data-reel="DEf2yzGPa6F" data-idx="15"
+                                data-label="Outros trabalhos" aria-label="Reel 15 — Outros trabalhos">
+                                <span class="reel-ph"><span class="idx">15</span><span class="tag">Reel</span></span>
                                 <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <path d="M8 5v14l11-7z" />
                                     </svg></span>
-                            </div>
+                            </a>
                             <a class="reel-cap"
                                 href="https://www.instagram.com/reel/DEf2yzGPa6F/?igsh=MXR2M2o3cnk0M2lneA=="
                                 target="_blank" rel="noopener">
@@ -2456,45 +2490,65 @@
             }, { rootMargin: '-45% 0px -50% 0px' });
             secoes.forEach(s => navObserver.observe(s));
 
-            /* ---------- Previews dos reels (embed do Instagram sob demanda) ----------
-               data-cover opcional: se houver uma capa local em midia/capas/, ela é
-               exibida primeiro e o embed só carrega no clique. */
-            const carregarReel = frame => {
-                if (frame.dataset.carregado) return;
-                frame.dataset.carregado = '1';
-                const iframe = document.createElement('iframe');
-                iframe.src = 'https://www.instagram.com/reel/' + frame.dataset.reel + '/embed';
-                iframe.loading = 'lazy';
-                iframe.title = 'Reel no Instagram';
-                iframe.setAttribute('scrolling', 'no');
-                iframe.setAttribute('allowtransparency', 'true');
-                iframe.addEventListener('load', () => iframe.classList.add('is-ready'));
-                frame.appendChild(iframe);
-            };
+            /* ---------- Reels do Instagram ----------
+               Por padrão nenhum iframe é carregado: o Instagram bloqueia o
+               enquadramento em domínios externos (X-Frame-Options), o que quebra em
+               produção. Cada moldura já é um link para o post.
+          
+               Para exibir a mídia dentro da moldura, use no HTML da moldura:
+                 data-video="midia/rogerio/01.mp4"  -> melhor opção: arquivo local
+                 data-cover="midia/capas/01.jpg"    -> imagem de capa local
+               Para tentar o embed oficial do Instagram, mude a linha abaixo para true. */
+            const EMBED_INSTAGRAM = false;
 
-            const reelFrames = document.querySelectorAll('.reel-frame');
-            const reelObserver = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    obs.unobserve(entry.target);
-                    if (!entry.target.dataset.cover) carregarReel(entry.target);
-                });
-            }, { rootMargin: '300px 0px' });
+            const molduras = [...document.querySelectorAll('.reel-frame')];
 
-            reelFrames.forEach(frame => {
+            molduras.forEach(frame => {
+                const arquivo = frame.dataset.video;
                 const capa = frame.dataset.cover;
-                if (capa) {
+
+                if (arquivo) {
+                    const video = document.createElement('video');
+                    video.src = arquivo;
+                    video.muted = true;
+                    video.loop = true;
+                    video.playsInline = true;
+                    video.preload = 'metadata';
+                    frame.prepend(video);
+                    frame.classList.add('has-media', 'vid-frame');
+                } else if (capa) {
                     const img = new Image();
                     img.src = capa;
                     img.alt = '';
                     img.className = 'reel-cover';
                     img.loading = 'lazy';
                     frame.prepend(img);
-                    frame.style.cursor = 'pointer';
-                    frame.addEventListener('click', () => carregarReel(frame), { once: true });
+                    frame.classList.add('has-media');
                 }
-                reelObserver.observe(frame);
             });
+
+            if (EMBED_INSTAGRAM) {
+                const semMidia = molduras.filter(f => !f.classList.contains('has-media'));
+                const embedObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        obs.unobserve(entry.target);
+                        const frame = entry.target;
+                        frame.removeAttribute('href');
+                        frame.innerHTML = '<blockquote class="instagram-media" data-instgrm-version="14" ' +
+                            'data-instgrm-permalink="https://www.instagram.com/reel/' + frame.dataset.reel + '/"></blockquote>';
+                        if (window.instgrm) window.instgrm.Embeds.process();
+                    });
+                }, { rootMargin: '300px 0px' });
+                semMidia.forEach(f => embedObserver.observe(f));
+                if (semMidia.length) {
+                    const script = document.createElement('script');
+                    script.async = true;
+                    script.src = 'https://www.instagram.com/embed.js';
+                    script.onload = () => window.instgrm && window.instgrm.Embeds.process();
+                    document.body.appendChild(script);
+                }
+            }
 
             /* ---------- Acordeão "Outros trabalhos" ---------- */
             const accBtn = document.getElementById('acc-btn');
@@ -2514,8 +2568,9 @@
                 new ResizeObserver(ajustarPainel).observe(accPanel.firstElementChild);
             }
 
-            /* ---------- Galeria de vídeos: prévia no hover + lightbox ---------- */
-            const vidFrames = [...document.querySelectorAll('.vid-frame')];
+            /* ---------- Galeria de vídeos: prévia no hover + lightbox ----------
+               Inclui os vídeos dos cases e qualquer reel com data-video local. */
+            const frames = [...document.querySelectorAll('.vid-frame')];
             const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const lb = document.getElementById('lightbox');
             const lbVideo = document.getElementById('lb-video');
@@ -2525,7 +2580,7 @@
             let atual = 0;
 
             /* A proporção real de cada vídeo define a moldura, evitando cortes */
-            vidFrames.forEach(frame => {
+            frames.forEach(frame => {
                 const video = frame.querySelector('video');
                 video.addEventListener('loadedmetadata', () => {
                     if (video.videoWidth) frame.style.setProperty('--ar', video.videoWidth + '/' + video.videoHeight);
@@ -2534,7 +2589,7 @@
 
             /* Prévia silenciosa ao passar o mouse (desktop) */
             if (!semMovimento && window.matchMedia('(hover: hover)').matches) {
-                vidFrames.forEach(frame => {
+                frames.forEach(frame => {
                     const video = frame.querySelector('video');
                     frame.addEventListener('mouseenter', () => {
                         frame.classList.add('is-preview');
@@ -2549,15 +2604,15 @@
             }
 
             const abrir = i => {
-                atual = (i + vidFrames.length) % vidFrames.length;
-                const frame = vidFrames[atual];
+                atual = (i + frames.length) % frames.length;
+                const frame = frames[atual];
                 const video = frame.querySelector('video');
                 video.pause();
                 frame.classList.remove('is-preview');
                 lbVideo.src = video.getAttribute('src');
                 lbIdx.textContent = frame.dataset.idx;
                 lbLabel.textContent = frame.dataset.label;
-                lbCount.textContent = (atual + 1) + ' / ' + vidFrames.length;
+                lbCount.textContent = (atual + 1) + ' / ' + frames.length;
                 lb.classList.add('is-open');
                 document.body.style.overflow = 'hidden';
                 lbVideo.play().catch(() => { });
@@ -2568,10 +2623,10 @@
                 lbVideo.removeAttribute('src');
                 lbVideo.load();
                 document.body.style.overflow = '';
-                vidFrames[atual].focus();
+                frames[atual].focus();
             };
 
-            vidFrames.forEach((frame, i) => frame.addEventListener('click', () => abrir(i)));
+            frames.forEach((frame, i) => frame.addEventListener('click', e => { e.preventDefault(); abrir(i); }));
             document.getElementById('lb-close').addEventListener('click', fecharLb);
             document.getElementById('lb-prev').addEventListener('click', () => abrir(atual - 1));
             document.getElementById('lb-next').addEventListener('click', () => abrir(atual + 1));

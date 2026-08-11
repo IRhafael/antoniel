@@ -1,701 +1,2590 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antoniel de Sousa - Especialista em Storytelling</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome (Ícones) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts: Inter -->
+    <title>Antoniel de Sousa — Comunicação Política</title>
+    <meta name="description"
+        content="Portfólio de Antoniel de Sousa. Comunicação política, storytelling e produção audiovisual. Storymaker e Vídeomaker Mobile.">
+    <meta name="theme-color" content="#0C0C0D">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* * ==============================================
-         * CONFIGURAÇÃO DE VARIÁVEIS DE COR (PALETA)
-         * ==============================================
-        */
-        :root {
-            --primary-bg: #121212;
-            --secondary-bg: #1E1E1E;
-            --box-bg: rgba(30, 30, 30, 0.7);
-            --accent: #8E24AA;
-            --accent-hover: #a132c2;
-            --text-primary: #F5F5F5;
-            --text-secondary: #A0A0A0;
-            --border-color: rgba(142, 36, 170, 0.3);
-        }
-        body.light-mode {
-            --primary-bg: #f7f7fa;
-            --secondary-bg: #fff;
-            --box-bg: rgba(255,255,255,0.7);
-            --accent: #8E24AA;
-            --accent-hover: #a132c2;
-            --text-primary: #232323;
-            --text-secondary: #666;
-            --border-color: rgba(142, 36, 170, 0.18);
-        }
-        .light-mode .header-glass {
-            background-color: rgba(255,255,255,0.7) !important;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .light-mode .toggle-switch-container {
-            background-color: #f3eafd;
-        }
-        .light-mode .service-card {
-            background-color: var(--box-bg);
-            color: var(--text-primary);
-        }
-        .light-mode .glowing-border {
-            border-color: var(--border-color);
-        }
-        .light-mode .text-white { color: var(--text-primary) !important; }
-        .light-mode .text-gray-400 { color: var(--text-secondary) !important; }
-        .light-mode .text-gray-300 { color: var(--text-secondary) !important; }
-        .light-mode .bg-accent { background-color: var(--accent) !important; }
-        .light-mode .bg-accent-hover { background-color: var(--accent-hover) !important; }
-        .light-mode .bg-white { background-color: #fff !important; }
-        .light-mode .text-gray-800 { color: #232323 !important; }
-        .light-mode .border { border-color: var(--border-color) !important; }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-        /* * ==============================================
-         * ESTILOS GERAIS E TIPOGRAFIA
-         * ==============================================
-        */
+    <style>
+        /* ============================================================
+   TOKENS
+   ============================================================ */
+        :root {
+            --bg: #0C0C0D;
+            --bg-2: #141416;
+            --fg: #F2F0EC;
+            --fg-dim: #8B8B90;
+            --line: rgba(242, 240, 236, .14);
+            --line-soft: rgba(242, 240, 236, .07);
+            --accent: #B15CD8;
+            --ease: cubic-bezier(.22, .61, .36, 1);
+            --pad: clamp(1.25rem, 5vw, 6rem);
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --serif: 'Instrument Serif', Georgia, serif;
+        }
+
+        [data-theme="light"] {
+            --bg: #F4F2ED;
+            --bg-2: #E9E6DF;
+            --fg: #111112;
+            --fg-dim: #6B6B6E;
+            --line: rgba(17, 17, 18, .16);
+            --line-soft: rgba(17, 17, 18, .08);
+            --accent: #7B1FA2;
+        }
+
+        /* ============================================================
+   BASE
+   ============================================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-primary);
-            overflow-x: hidden; /* Previne scroll horizontal */
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--sans);
+            font-size: clamp(.95rem, .9rem + .2vw, 1.05rem);
+            line-height: 1.6;
+            font-weight: 400;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color .6s var(--ease), color .6s var(--ease);
         }
 
-        /* * ==============================================
-         * ANIMAÇÕES E EFEITOS DE UI/UX
-         * ==============================================
-        */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        img,
+        video {
+            max-width: 100%;
+            display: block
         }
 
-        .hero-gradient-animated {
-            background: linear-gradient(-45deg, var(--primary-bg), #2c1a3e, var(--primary-bg), #1c0f2a);
-            background-size: 400% 400%;
-            animation: gradientAnimation 20s ease infinite;
+        a {
+            color: inherit;
+            text-decoration: none
         }
-        
-        .reveal {
+
+        button {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: 0;
+            cursor: pointer
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin: 0
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #fff
+        }
+
+        :focus-visible {
+            outline: 1px solid var(--accent);
+            outline-offset: 4px
+        }
+
+        .wrap {
+            width: min(1400px, 100%);
+            margin-inline: auto;
+            padding-inline: var(--pad)
+        }
+
+        .section {
+            padding-block: clamp(5rem, 12vh, 9.5rem)
+        }
+
+        .rule {
+            height: 1px;
+            background: var(--line);
+            border: 0;
+            margin: 0
+        }
+
+        /* Tipografia utilitária */
+        .kicker {
+            font-size: .68rem;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--fg-dim);
+        }
+
+        .serif-it {
+            font-family: var(--serif);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: -.01em
+        }
+
+        .display {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -.045em;
+            line-height: .85;
+        }
+
+        .num {
+            font-family: var(--serif);
+            font-size: .95rem;
+            letter-spacing: .02em;
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        /* ============================================================
+   HEADER / NAV
+   ============================================================ */
+        .header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 80;
+            padding-block: clamp(.9rem, 2vw, 1.4rem);
+            transition: background-color .5s var(--ease), border-color .5s var(--ease), padding .5s var(--ease);
+            border-bottom: 1px solid transparent;
+        }
+
+        .header.is-scrolled {
+            background: var(--bg);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom-color: var(--line-soft);
+            padding-block: .7rem;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem
+        }
+
+        .brand {
+            font-weight: 600;
+            font-size: .9rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .brand span {
+            color: var(--fg-dim);
+            font-weight: 400
+        }
+
+        .nav {
+            display: none;
+            gap: clamp(1.1rem, 2.4vw, 2.4rem);
+            align-items: center
+        }
+
+        .nav a {
+            position: relative;
+            font-size: .72rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--fg-dim);
+            transition: color .4s var(--ease);
+            padding-block: .25rem;
+        }
+
+        .nav a i {
+            font-style: normal;
+            font-family: var(--serif);
+            margin-right: .45em;
+            opacity: .55
+        }
+
+        .nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s var(--ease);
+        }
+
+        .nav a:hover,
+        .nav a.is-active {
+            color: var(--fg)
+        }
+
+        .nav a:hover::after,
+        .nav a.is-active::after {
+            transform: scaleX(1);
+            transform-origin: left
+        }
+
+        .header-tools {
+            display: flex;
+            align-items: center;
+            gap: .9rem
+        }
+
+        .theme-btn {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            transition: border-color .4s var(--ease), transform .4s var(--ease);
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent);
+            transform: rotate(25deg)
+        }
+
+        .theme-btn svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.4
+        }
+
+        .theme-btn .sun {
+            display: none
+        }
+
+        [data-theme="light"] .theme-btn .sun {
+            display: block
+        }
+
+        [data-theme="light"] .theme-btn .moon {
+            display: none
+        }
+
+        .burger {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            gap: 5px;
+            align-content: center;
+        }
+
+        .burger span {
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: currentColor;
+            transition: transform .45s var(--ease), opacity .3s
+        }
+
+        .menu-open .burger span:nth-child(1) {
+            transform: translateY(3px) rotate(45deg)
+        }
+
+        .menu-open .burger span:nth-child(2) {
+            opacity: 0
+        }
+
+        .menu-open .burger span:nth-child(3) {
+            transform: translateY(-3px) rotate(-45deg)
+        }
+
+        /* Overlay mobile */
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            z-index: 70;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem var(--pad) 3rem;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path .7s var(--ease), visibility 0s linear .7s;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .menu-open .mobile-nav {
+            clip-path: inset(0 0 0 0);
+            pointer-events: auto;
+            visibility: visible;
+            transition-delay: 0s
+        }
+
+        .mobile-nav ol {
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .mobile-nav li {
+            border-bottom: 1px solid var(--line-soft)
+        }
+
+        .mobile-nav a {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding-block: clamp(.8rem, 2.4vh, 1.3rem);
+            font-size: clamp(1.7rem, 9vw, 2.6rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: -.03em;
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(18px);
+            transition: opacity .5s var(--ease), transform .5s var(--ease);
         }
 
-        .reveal.visible {
+        .menu-open .mobile-nav a {
             opacity: 1;
-            transform: translateY(0);
+            transform: none
         }
 
-        .glowing-border {
+        .mobile-nav li:nth-child(1) a {
+            transition-delay: .12s
+        }
+
+        .mobile-nav li:nth-child(2) a {
+            transition-delay: .18s
+        }
+
+        .mobile-nav li:nth-child(3) a {
+            transition-delay: .24s
+        }
+
+        .mobile-nav li:nth-child(4) a {
+            transition-delay: .30s
+        }
+
+        .mobile-nav li:nth-child(5) a {
+            transition-delay: .36s
+        }
+
+        .mobile-nav a i {
+            font-style: normal;
+            font-family: var(--serif);
+            font-size: .85rem;
+            color: var(--accent)
+        }
+
+        .mobile-nav .mobile-foot {
+            margin-top: auto;
+            padding-top: 2.5rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        .mobile-nav .mobile-foot a {
+            font-size: .7rem;
+            letter-spacing: .18em;
+            font-weight: 500;
+            color: var(--fg-dim);
+            opacity: 1;
+            transform: none;
+            padding: 0
+        }
+
+        /* ============================================================
+   HERO
+   ============================================================ */
+        .hero {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-top: clamp(7rem, 18vh, 11rem);
+            padding-bottom: clamp(1.5rem, 4vh, 3rem);
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        .glowing-border:hover {
-            border-color: rgba(142, 36, 170, 0.7);
-            box-shadow: 0 0 15px 5px rgba(142, 36, 170, 0.15);
-        }
-        
-        /* * ==============================================
-         * COMPONENTES DE UI PERSONALIZADOS
-         * ==============================================
-        */
-        .header-glass {
-            background-color: rgba(18, 18, 18, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
         }
 
-        .toggle-switch-container {
-            position: relative;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(2rem, 5vw, 3rem);
+            align-items: end;
+        }
+
+        .hero-eyebrow {
             display: flex;
-            background-color: var(--secondary-bg);
-            border-radius: 9999px;
-            padding: 4px;
-            border: 1px solid var(--border-color);
+            gap: .8rem;
+            align-items: center;
+            margin-bottom: clamp(1.5rem, 4vh, 2.5rem)
         }
 
-        .toggle-btn {
-            position: relative;
-            z-index: 10;
-            padding: 6px 16px;
-            border-radius: 9999px;
-            color: var(--text-secondary);
+        .hero-eyebrow .dot {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex: none
+        }
+
+        .hero-name {
+            font-size: clamp(.7rem, 1.4vw, .8rem);
+            letter-spacing: .34em;
+            text-transform: uppercase;
+            color: var(--fg-dim);
+            margin-bottom: clamp(1rem, 2.5vh, 1.6rem);
             font-weight: 500;
-            cursor: pointer;
-            transition: color 0.4s ease;
-            outline: none;
-            background-color: transparent;
-            border: none;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12.5vw, 11.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -.05em;
+            line-height: .82;
+        }
+
+        .hero-title .line {
+            display: block
+        }
+
+        .hero-title .thin {
+            font-weight: 300;
+            color: var(--fg-dim)
+        }
+
+        .hero-lead {
+            max-width: 36ch;
+            margin-top: clamp(1.6rem, 4vh, 2.4rem);
+            font-size: clamp(1rem, 1.6vw, 1.3rem);
+            line-height: 1.45;
+            color: var(--fg-dim);
+        }
+
+        .hero-lead em {
+            color: var(--fg);
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.12em
+        }
+
+        .hero-media {
+            position: relative
+        }
+
+        .hero-media img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: center 20%;
+            filter: grayscale(1) contrast(1.06);
+            transition: filter .8s var(--ease);
+        }
+
+        .hero-media:hover img {
+            filter: grayscale(0) contrast(1)
+        }
+
+        .hero-cta {
+            margin-top: clamp(1.8rem, 4vh, 2.6rem);
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            font-size: .72rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding-bottom: .55rem;
+            border-bottom: 1px solid var(--fg);
+            transition: gap .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+        }
+
+        .hero-cta:hover {
+            gap: 1.4rem;
+            color: var(--accent);
+            border-color: var(--accent)
+        }
+
+        .hero-foot {
+            margin-top: clamp(2.5rem, 7vh, 4.5rem);
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--line-soft);
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem clamp(1.2rem, 4vw, 3.5rem);
+        }
+
+        .hero-foot span {
+            font-size: .66rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
+        }
+
+        /* Faixa em movimento */
+        .ticker {
+            border-block: 1px solid var(--line-soft);
+            padding-block: .85rem;
+            overflow: hidden;
+            display: flex;
+            user-select: none;
+        }
+
+        .ticker-track {
+            display: flex;
+            flex: none;
+            gap: 2.5rem;
+            padding-right: 2.5rem;
             white-space: nowrap;
+            animation: slide 38s linear infinite;
         }
 
-        .toggle-btn.active {
-            color: var(--text-primary);
+        .ticker span {
+            font-size: .7rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
         }
 
-        #glider {
+        .ticker span::after {
+            content: "—";
+            margin-left: 2.5rem;
+            color: var(--accent)
+        }
+
+        @keyframes slide {
+            to {
+                transform: translateX(-100%)
+            }
+        }
+
+        /* ============================================================
+   CABEÇALHO DE SEÇÃO
+   ============================================================ */
+        .sec-head {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding-bottom: 1.1rem;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+        }
+
+        .sec-head h2 {
+            font-size: clamp(1.6rem, 4.4vw, 3rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: -.035em;
+            line-height: 1;
+        }
+
+        .sec-head .num {
+            margin-right: .2rem
+        }
+
+        .sec-head .aside {
+            margin-left: auto;
+            font-size: .66rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
+        }
+
+        /* ============================================================
+   SOBRE
+   ============================================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(2rem, 5vw, 4rem)
+        }
+
+        .about-photo {
+            position: relative
+        }
+
+        .about-photo img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.05);
+            transition: filter .8s var(--ease);
+        }
+
+        .about-photo:hover img {
+            filter: grayscale(0)
+        }
+
+        .about-photo figcaption {
+            margin-top: .8rem;
+            font-size: .64rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--fg-dim);
+        }
+
+        .about-text p {
+            margin-bottom: 1.4rem;
+            max-width: 60ch
+        }
+
+        .about-text .big {
+            font-family: var(--serif);
+            font-size: clamp(1.4rem, 3.2vw, 2.35rem);
+            line-height: 1.24;
+            letter-spacing: -.01em;
+            color: var(--fg);
+            margin-bottom: 1.8rem;
+        }
+
+        .about-text .muted {
+            color: var(--fg-dim)
+        }
+
+        .meta-list {
+            margin-top: clamp(2rem, 5vh, 3rem);
+            border-top: 1px solid var(--line-soft)
+        }
+
+        .meta-list div {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding-block: .85rem;
+            border-bottom: 1px solid var(--line-soft);
+            font-size: .7rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .meta-list dt {
+            color: var(--fg-dim)
+        }
+
+        .meta-list dd {
+            margin: 0;
+            text-align: right
+        }
+
+        /* ============================================================
+   ATUAÇÃO (lista editorial)
+   ============================================================ */
+        .svc {
+            border-top: 1px solid var(--line)
+        }
+
+        .svc-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: .6rem 1.5rem;
+            align-items: start;
+            padding-block: clamp(1.6rem, 4vh, 2.6rem);
+            border-bottom: 1px solid var(--line);
+            transition: padding-left .5s var(--ease), color .5s var(--ease);
+        }
+
+        .svc-item:hover {
+            padding-left: clamp(.5rem, 1.5vw, 1.5rem)
+        }
+
+        .svc-item h3 {
+            font-size: clamp(1.35rem, 4vw, 2.6rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: -.035em;
+            line-height: 1.02;
+            transition: color .5s var(--ease);
+        }
+
+        .svc-item:hover h3 {
+            color: var(--accent)
+        }
+
+        .svc-item p {
+            grid-column: 2;
+            color: var(--fg-dim);
+            max-width: 52ch;
+            font-size: .95rem
+        }
+
+        /* ============================================================
+   EXPERIÊNCIA (timeline)
+   ============================================================ */
+        .tl {
+            border-top: 1px solid var(--line)
+        }
+
+        .tl-item {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: .4rem;
+            padding-block: clamp(1.6rem, 4vh, 2.4rem);
+            border-bottom: 1px solid var(--line);
+            transition: background-color .5s var(--ease);
+        }
+
+        .tl-year {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            color: var(--accent);
+            letter-spacing: .04em;
+        }
+
+        .tl-item h3 {
+            font-size: clamp(1.3rem, 3.6vw, 2.2rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: -.03em;
+            line-height: 1.05;
+        }
+
+        .tl-item p {
+            color: var(--fg-dim);
+            max-width: 48ch
+        }
+
+        /* ============================================================
+   CASES / TRABALHOS
+   ============================================================ */
+        .case {
+            padding-block: clamp(3rem, 8vh, 6rem);
+            border-bottom: 1px solid var(--line-soft)
+        }
+
+        .case:last-of-type {
+            border-bottom: 0
+        }
+
+        .case-head {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: .5rem;
+            margin-bottom: clamp(1.6rem, 4vh, 2.6rem);
+            align-items: end;
+        }
+
+        .case-head h3 {
+            font-size: clamp(2rem, 7vw, 4.6rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -.045em;
+            line-height: .9;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 1.4rem;
+            flex-wrap: wrap;
+            align-items: baseline
+        }
+
+        .case-meta span {
+            font-size: .66rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
+        }
+
+        .case-desc {
+            color: var(--fg-dim);
+            max-width: 46ch;
+            margin-top: .6rem
+        }
+
+        .vid-grid {
+            display: grid;
+            gap: clamp(.8rem, 2vw, 1.6rem);
+            align-items: start
+        }
+
+        .vid {
+            margin: 0
+        }
+
+        .vid-frame {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            aspect-ratio: var(--ar, 9/16);
+            background: #000;
+            border: 1px solid var(--line-soft);
+            cursor: pointer;
+            transition: border-color .5s var(--ease), transform .6s var(--ease);
+        }
+
+        .vid-frame:hover {
+            border-color: var(--accent)
+        }
+
+        .vid-frame video {
             position: absolute;
-            height: calc(100% - 8px);
-            background-color: var(--accent);
-            border-radius: 9999px;
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            top: 4px;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(.35) contrast(1.04);
+            transition: filter .7s var(--ease), transform .9s var(--ease);
+        }
+
+        .vid-frame:hover video {
+            filter: none;
+            transform: scale(1.03)
+        }
+
+        .vid-ph {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: clamp(.7rem, 1.6vw, 1rem);
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .45), transparent 38%, transparent 62%, rgba(0, 0, 0, .5));
+            transition: opacity .6s var(--ease);
+        }
+
+        .vid-frame.is-preview .vid-ph {
+            opacity: 0
+        }
+
+        .vid-ph .idx {
+            font-family: var(--serif);
+            font-size: .95rem;
+            color: #fff
+        }
+
+        .vid-ph .tag {
+            font-size: .58rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .7)
+        }
+
+        .vid-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(255, 255, 255, .55);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            pointer-events: none;
+            transition: opacity .6s var(--ease), transform .6s var(--ease), background-color .5s var(--ease);
+        }
+
+        .vid-frame:hover .vid-play {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.06)
+        }
+
+        .vid-frame.is-preview .vid-play {
+            opacity: 0
+        }
+
+        .vid-play svg {
+            width: 13px;
+            height: 13px;
+            fill: currentColor;
+            margin-left: 2px
+        }
+
+        .vid figcaption {
+            margin-top: .6rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: .6rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--fg-dim);
+        }
+
+        /* Lightbox */
+        .lb {
+            position: fixed;
+            inset: 0;
+            z-index: 120;
+            display: grid;
+            place-items: center;
+            background: rgba(6, 6, 7, .96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: clamp(3.5rem, 8vh, 5rem) clamp(1rem, 5vw, 4rem);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .5s var(--ease), visibility 0s linear .5s;
+        }
+
+        .lb.is-open {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s
+        }
+
+        .lb video {
+            max-width: min(100%, 520px);
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            background: #000;
+            display: block;
+            transform: scale(.97);
+            transition: transform .6s var(--ease);
+        }
+
+        .lb.is-open video {
+            transform: none
+        }
+
+        .lb-bar {
+            position: absolute;
+            top: 0;
             left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: clamp(1rem, 3vw, 1.6rem) clamp(1rem, 5vw, 2.5rem);
+            color: #F2F0EC;
         }
 
-        .service-card {
-            background-color: var(--box-bg);
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        .service-card .icon-container {
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        .lb-cap {
+            display: flex;
+            gap: .9rem;
+            align-items: baseline;
+            font-size: .64rem;
+            letter-spacing: .2em;
+            text-transform: uppercase
         }
 
-        #mais-trabalhos-content {
+        .lb-cap .idx {
+            font-family: var(--serif);
+            color: var(--accent);
+            letter-spacing: .02em
+        }
+
+        .lb-cap .count {
+            color: rgba(242, 240, 236, .5)
+        }
+
+        .lb-nav {
+            position: absolute;
+            bottom: clamp(1rem, 4vh, 2rem);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: .6rem;
+        }
+
+        .lb-btn {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #F2F0EC;
+            border: 1px solid rgba(242, 240, 236, .28);
+            transition: border-color .4s var(--ease), color .4s var(--ease), background-color .4s var(--ease);
+        }
+
+        .lb-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #fff
+        }
+
+        .lb-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6
+        }
+
+        /* Manifesto / citação editorial */
+        .quote {
+            padding-block: clamp(3.5rem, 9vh, 6.5rem);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .quote .mark {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: .6;
+            color: var(--accent)
+        }
+
+        .quote p {
+            margin-bottom: 1.3rem;
+            max-width: 60ch;
+            color: var(--fg-dim)
+        }
+
+        .quote p:first-of-type {
+            font-family: var(--serif);
+            font-size: clamp(1.25rem, 2.8vw, 2rem);
+            line-height: 1.3;
+            color: var(--fg);
+        }
+
+        .quote strong {
+            color: var(--fg);
+            font-weight: 600
+        }
+
+        .quote .end {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--fg)
+        }
+
+        /* ============================================================
+   REELS (previews do Instagram)
+   ============================================================ */
+        .reels {
+            display: grid;
+            gap: clamp(1rem, 2.6vw, 2rem);
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+        }
+
+        .reels-sm {
+            grid-template-columns: repeat(auto-fill, minmax(min(48%, 165px), 1fr));
+            gap: clamp(.7rem, 1.8vw, 1.3rem);
+        }
+
+        .reel {
+            margin: 0
+        }
+
+        .reel-frame {
+            position: relative;
+            display: block;
+            aspect-ratio: 1/1.78;
+            overflow: hidden;
+            background: var(--bg-2);
+            border: 1px solid var(--line-soft);
+            transition: border-color .5s var(--ease);
+        }
+
+        .reel:hover .reel-frame {
+            border-color: var(--accent)
+        }
+
+        .reel-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: calc(100% + 58px);
+            border: 0;
+            display: block;
+            opacity: 0;
+            transition: opacity .8s var(--ease);
+        }
+
+        .reel-frame iframe.is-ready {
+            opacity: 1
+        }
+
+        .reel-cover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .reel-ph {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: clamp(.7rem, 1.6vw, 1rem);
+            pointer-events: none;
+        }
+
+        .reel-ph .idx {
+            font-family: var(--serif);
+            font-size: .95rem;
+            color: var(--accent)
+        }
+
+        .reel-ph .tag {
+            font-size: .6rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
+        }
+
+        .reel-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--fg-dim);
+            transition: border-color .5s var(--ease), color .5s var(--ease), transform .5s var(--ease);
+        }
+
+        .reel:hover .reel-play {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.08)
+        }
+
+        .reel-play svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+            margin-left: 2px
+        }
+
+        .reel-cap {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: .7rem;
+            font-size: .62rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--fg-dim);
+            transition: color .4s var(--ease);
+        }
+
+        .reel-cap .arrow {
+            transition: transform .45s var(--ease)
+        }
+
+        .reel-cap:hover {
+            color: var(--accent)
+        }
+
+        .reel-cap:hover .arrow {
+            transform: translate(3px, -3px)
+        }
+
+        /* Acordeão */
+        .acc-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-block: 1.2rem;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            font-size: .72rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color .4s var(--ease);
+        }
+
+        .acc-btn:hover {
+            color: var(--accent)
+        }
+
+        .acc-btn .sign {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            line-height: 1;
+            transition: transform .5s var(--ease)
+        }
+
+        .acc-btn[aria-expanded="true"] .sign {
+            transform: rotate(45deg)
+        }
+
+        .acc-panel {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.7s ease-in-out;
+            transition: max-height .8s var(--ease)
         }
 
-        .view-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out, display 0.5s;
+        /* ============================================================
+   CONTATO
+   ============================================================ */
+        .contact {
+            padding-block: clamp(5rem, 14vh, 11rem)
         }
-        .view-content.active {
-            display: block;
+
+        .contact-title {
+            font-size: clamp(2.4rem, 10vw, 8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -.05em;
+            line-height: .86;
+        }
+
+        .contact-title .serif-it {
+            text-transform: none;
+            font-weight: 400;
+            color: var(--accent);
+            letter-spacing: -.02em
+        }
+
+        .contact-cta {
+            margin-top: clamp(2rem, 5vh, 3.5rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem 1.9rem;
+            border: 1px solid var(--fg);
+            font-size: .72rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: background-color .5s var(--ease), color .5s var(--ease), gap .4s var(--ease);
+        }
+
+        .contact-cta:hover {
+            background: var(--fg);
+            color: var(--bg);
+            gap: 1.6rem
+        }
+
+        .contact-cta svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor
+        }
+
+        .contact-list {
+            margin-top: clamp(3rem, 8vh, 5rem);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .contact-list a,
+        .contact-list div {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding-block: 1.1rem;
+            border-bottom: 1px solid var(--line-soft);
+            transition: color .4s var(--ease), padding-left .4s var(--ease);
+        }
+
+        .contact-list a:hover {
+            color: var(--accent);
+            padding-left: .6rem
+        }
+
+        .contact-list .k {
+            font-size: .66rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
+        }
+
+        .contact-list .v {
+            font-size: clamp(.9rem, 2vw, 1.15rem);
+            text-align: right;
+            word-break: break-word
+        }
+
+        /* ============================================================
+   RODAPÉ + BOTÃO FLUTUANTE
+   ============================================================ */
+        .footer {
+            border-top: 1px solid var(--line);
+            padding-block: 2rem
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .footer p,
+        .footer a {
+            font-size: .64rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--fg-dim)
+        }
+
+        .footer a:hover {
+            color: var(--fg)
+        }
+
+        .to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem
+        }
+
+        .wa-float {
+            position: fixed;
+            right: clamp(1rem, 3vw, 2rem);
+            bottom: clamp(1rem, 3vw, 2rem);
+            z-index: 60;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--fg);
+            color: var(--bg);
+            opacity: 0;
+            transform: translateY(14px) scale(.9);
+            pointer-events: none;
+            transition: opacity .5s var(--ease), transform .5s var(--ease), background-color .4s var(--ease);
+        }
+
+        .wa-float.is-on {
             opacity: 1;
+            transform: none;
+            pointer-events: auto
+        }
+
+        .wa-float:hover {
+            background: var(--accent);
+            color: #fff
+        }
+
+        .wa-float svg {
+            width: 21px;
+            height: 21px;
+            fill: currentColor
+        }
+
+        /* ============================================================
+   REVEAL
+   ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease);
+            transition-delay: var(--d, 0ms);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none
+        }
+
+        /* ============================================================
+   BREAKPOINTS
+   ============================================================ */
+        @media (min-width:720px) {
+            .about-grid {
+                grid-template-columns: 1.05fr 1fr;
+                align-items: start
+            }
+
+            .about-photo {
+                margin-top: clamp(1rem, 4vw, 3.5rem)
+            }
+
+            .svc-item {
+                grid-template-columns: auto minmax(0, 1.15fr) minmax(0, 1fr);
+                align-items: baseline;
+                gap: 2rem
+            }
+
+            .svc-item p {
+                grid-column: 3;
+                margin-left: auto
+            }
+
+            .tl-item {
+                grid-template-columns: 6rem minmax(0, 1.1fr) minmax(0, 1.2fr);
+                gap: 2rem;
+                align-items: baseline
+            }
+
+            .case-head {
+                grid-template-columns: 1.2fr 1fr;
+                gap: 2rem
+            }
+
+            .vid-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .vid-grid .vid:nth-child(2) {
+                margin-top: clamp(1.2rem, 4.5vw, 3.5rem)
+            }
+
+            .vid-grid .vid:nth-child(3) {
+                margin-top: clamp(.6rem, 2vw, 1.8rem)
+            }
+
+            .case-alt .vid-grid .vid:nth-child(1) {
+                margin-top: clamp(1.2rem, 4.5vw, 3.5rem)
+            }
+
+            .case-alt .vid-grid .vid:nth-child(2) {
+                margin-top: 0
+            }
+
+            .case-alt .vid-grid .vid:nth-child(3) {
+                margin-top: clamp(2rem, 6.5vw, 5rem)
+            }
+
+            .quote {
+                grid-template-columns: auto 1fr;
+                gap: 2.5rem
+            }
+
+            .contact-list {
+                grid-template-columns: 1fr 1fr;
+                column-gap: clamp(2rem, 6vw, 5rem)
+            }
+        }
+
+        @media (min-width:980px) {
+            .nav {
+                display: flex
+            }
+
+            .burger {
+                display: none
+            }
+
+            .hero-grid {
+                grid-template-columns: minmax(0, 1.55fr) minmax(0, .75fr);
+                gap: clamp(2rem, 5vw, 5rem)
+            }
+
+            .hero-media {
+                align-self: end;
+                margin-bottom: .4rem
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1.15fr;
+                gap: clamp(3rem, 7vw, 7rem)
+            }
+
+            .about-text {
+                padding-top: clamp(1rem, 4vw, 3rem)
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            * {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important
+            }
+
+            html {
+                scroll-behavior: auto
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none
+            }
         }
     </style>
 </head>
-<body class="antialiased">
 
-    <!-- Header: Layout ajustado para ser responsivo em telas menores (mobile) -->
-    <header class="header-glass p-4 fixed top-0 left-0 right-0 z-50 transition-colors duration-500">
-        <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-2">
-            <div class="flex items-center gap-4 w-full sm:w-auto justify-between">
-                <h1 class="text-xl sm:text-2xl font-bold tracking-wider text-white dark:text-white">Antoniel de Sousa</h1>
-                <!-- Botão mobile para abrir menu -->
-                <button id="menu-toggle" class="sm:hidden text-2xl text-white focus:outline-none" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
-            </div>
-            <!-- Menu de navegação -->
-            <ul id="main-nav" class="hidden sm:flex flex-row gap-6 items-center font-medium text-base transition-all duration-300">
-                <li><a href="#sobre" class="hover:underline">Sobre mim</a></li>
-                <li><a href="#servicos" class="hover:underline">Serviços</a></li>
-                <li><a href="#experiencia" class="hover:underline">Experiência</a></li>
-                <li><a href="#political-portfolio" class="hover:underline">Portfólio</a></li>
-                <li><a href="#mais-trabalhos" class="hover:underline">Mais Trabalhos</a></li>
-                <li><a href="#contato" class="hover:underline">Contato</a></li>
-            </ul>
-            <!-- Switch de visualização e modo -->
-            <div class="flex items-center gap-3 mt-3 sm:mt-0">
-                <div class="toggle-switch-container">
-                    <div id="glider"></div>
-                    <button id="political-btn" class="toggle-btn active" onclick="switchView('political')">
-                        <i class="fas fa-landmark mr-2 text-xs"></i>Político
-                    </button>
-                    <button id="business-btn" class="toggle-btn" onclick="switchView('business')">
-                        <i class="fas fa-briefcase mr-2 text-xs"></i>Empresarial
-                    </button>
-                </div>
-                <!-- Toggle Light/Dark -->
-                <button id="toggle-theme" class="ml-2 p-2 rounded-full border border-accent hover:bg-accent hover:text-white transition-colors text-xl bg-transparent" title="Alternar tema" aria-label="Alternar tema">
-                    <i id="theme-icon" class="fas fa-moon"></i>
+<body>
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="header" id="header">
+        <div class="wrap header-inner">
+            <a href="#topo" class="brand">Antoniel <span>de Sousa</span></a>
+
+            <nav class="nav" id="nav" aria-label="Navegação principal">
+                <a href="#sobre"><i>01</i>Sobre</a>
+                <a href="#atuacao"><i>02</i>Atuação</a>
+                <a href="#experiencia"><i>03</i>Experiência</a>
+                <a href="#trabalhos"><i>04</i>Trabalhos</a>
+                <a href="#contato"><i>05</i>Contato</a>
+            </nav>
+
+            <div class="header-tools">
+                <button class="theme-btn" id="theme-btn" aria-label="Alternar tema claro e escuro">
+                    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                    </svg>
+                </button>
+                <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"
+                    aria-controls="mobile-nav">
+                    <span></span><span></span><span></span>
                 </button>
             </div>
-        </nav>
-        <!-- Menu mobile -->
-        <ul id="mobile-nav" class="sm:hidden fixed top-16 left-0 right-0 bg-[var(--primary-bg)] shadow-lg z-40 flex-col gap-4 px-8 py-6 font-medium text-base hidden rounded-b-2xl border-b border-[var(--border-color)]">
-            <li><a href="#sobre" class="block py-2 hover:underline">Sobre mim</a></li>
-            <li><a href="#servicos" class="block py-2 hover:underline">Serviços</a></li>
-            <li><a href="#experiencia" class="block py-2 hover:underline">Experiência</a></li>
-            <li><a href="#political-portfolio" class="block py-2 hover:underline">Portfólio</a></li>
-            <li><a href="#mais-trabalhos" class="block py-2 hover:underline">Mais Trabalhos</a></li>
-            <li><a href="#contato" class="block py-2 hover:underline">Contato</a></li>
-        </ul>
+        </div>
     </header>
 
-    <main>
-        <!-- Seção Herói -->
-        <section class="hero-gradient-animated text-white min-h-screen flex items-center justify-center pt-32 sm:pt-20">
-            <div class="container mx-auto text-center px-6">
-                <!-- Conteúdo Político -->
-                <div id="political-hero" class="view-content" data-view="political">
-                    <span class="bg-opacity-20 text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border border-opacity-30" style="color: var(--accent); background-color: rgba(142,36,170,0.1); border-color: var(--border-color);">Especialista em Storytelling Político</span>
-                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Conectando Discursos e Votos</h2>
-                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300">Transformo sua caminhada política em narrativas visuais que emocionam, engajam e geram resultados reais.</p>
-                    <a href="#contato" class="glowing-border bg-accent hover:bg-accent-hover text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105" style="background-color: var(--accent);">
-                        <i class="fab fa-whatsapp mr-2"></i>Solicitar Orçamento
-                    </a>
+    <!-- ============================ MENU MOBILE ============================ -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ol>
+            <li><a href="#sobre"><i>01</i>Sobre</a></li>
+            <li><a href="#atuacao"><i>02</i>Atuação</a></li>
+            <li><a href="#experiencia"><i>03</i>Experiência</a></li>
+            <li><a href="#trabalhos"><i>04</i>Trabalhos</a></li>
+            <li><a href="#contato"><i>05</i>Contato</a></li>
+        </ol>
+        <div class="mobile-foot">
+            <a href="https://wa.me/5589994637481" target="_blank" rel="noopener">WhatsApp ↗</a>
+            <a href="https://instagram.com/antonielsousaas" target="_blank" rel="noopener">Instagram ↗</a>
+            <a href="mailto:antonielsousa285@gmail.com">E-mail ↗</a>
+        </div>
+    </div>
+
+    <main id="topo">
+
+        <!-- ============================ HERO ============================ -->
+        <section class="hero">
+            <div class="wrap">
+                <div class="hero-eyebrow reveal">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span class="kicker">Storymaker &amp; Vídeomaker Mobile</span>
                 </div>
 
-                <!-- Conteúdo Empresarial -->
-                <div id="business-hero" class="view-content" data-view="business">
-                    <span class="bg-opacity-20 text-sm font-semibold inline-block py-2 px-4 rounded-full mb-6 border border-opacity-30" style="color: var(--accent); background-color: rgba(142,36,170,0.1); border-color: var(--border-color);">Especialista em Storytelling de Marca</span>
-                    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Conectando Marcas e Clientes</h2>
-                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300">Transformo a história da sua empresa em narrativas visuais que cativam, engajam e impulsionam o crescimento.</p>
-                     <a href="#contato" class="glowing-border bg-accent hover:bg-accent-hover text-white font-bold py-4 px-8 rounded-full text-lg inline-block transition-transform transform hover:scale-105" style="background-color: var(--accent);">
-                        <i class="fas fa-handshake mr-2"></i>Vamos Conversar
-                    </a>
+                <div class="hero-grid">
+                    <div>
+                        <p class="hero-name reveal" style="--d:60ms">Antoniel de Sousa</p>
+                        <h1 class="hero-title reveal" style="--d:120ms">
+                            <span class="line">Comunicação</span>
+                            <span class="line thin">Política</span>
+                        </h1>
+                        <p class="hero-lead reveal" style="--d:220ms">
+                            <em>Storytelling</em> e produção audiovisual que transformam
+                            a caminhada política em narrativa.
+                        </p>
+                        <a href="#trabalhos" class="hero-cta reveal" style="--d:300ms">Ver trabalhos <span
+                                aria-hidden="true">↓</span></a>
+                    </div>
+
+                    <figure class="hero-media reveal" style="--d:380ms">
+                        <img src="midia/antoniel.png" alt="Retrato de Antoniel de Sousa" loading="eager"
+                            decoding="async">
+                    </figure>
+                </div>
+
+                <div class="hero-foot reveal" style="--d:460ms">
+                    <span>Piauí — Brasil</span>
+                    <span>Campanhas 2024 / 2025</span>
+                    <span>Vídeo · Stories · Reels</span>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Sobre mim -->
-        <section id="sobre" class="py-20" style="background-color: var(--primary-bg);">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
-                    <!-- Foto animada -->
-                    <div class="relative flex-shrink-0 mb-8 md:mb-0 reveal" style="transition-delay: 100ms;">
-                        <div class="w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden shadow-xl border-4 border-[var(--accent)] bg-gradient-to-br from-[var(--accent)]/30 to-[var(--primary-bg)] flex items-center justify-center group hover:scale-105 hover:shadow-2xl transition-all duration-500">
-                            <img src="midia/sobremim.jpeg" alt="Foto de Antoniel Sousa" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-                        </div>
-                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[var(--accent)] text-white text-xs font-semibold px-4 py-1 rounded-full shadow-lg opacity-90 animate-pulse select-none pointer-events-none">Storymaker e Vídeomaker Mobile</div>
-                    </div>
-                    <!-- Texto -->
-                    <div class="flex-1 bg-[var(--box-bg)] rounded-2xl glowing-border p-8 md:p-12 text-center md:text-left reveal" style="backdrop-filter: blur(6px);">
-                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4" style="color: var(--accent);">Sobre mim</h2>
-                        <p class="text-lg md:text-xl text-gray-300 mb-6">Sou Antoniel Sousa, especialista em mídias sociais e apaixonado por contar histórias autênticas através da captação de imagens. Com experiência em Storymaker e Vídeomaker Mobile, busco eternizar momentos únicos e criar conexões que fazem a diferença.</p>
-                        <p class="text-base md:text-lg text-gray-400 mb-4">Nesse meu portfólio, traduzo minha trajetória e meu compromisso em atuar de forma estratégica tanto no cenário político quanto no empresarial. Minha missão é transformar ideias em resultados concretos, unindo a força da gestão pública, pautada por valores, políticas eficazes e governança, com a visão corporativa, marcada por inovação, eficiência e responsabilidade social.</p>
-                        <p class="text-base md:text-lg text-gray-400 italic">Acredito que política e empreendedorismo não são caminhos distintos, mas complementares. Quando bem alinhados, têm o poder de gerar impacto positivo, impulsionar o desenvolvimento e construir soluções sustentáveis que beneficiam a sociedade, as instituições e o mercado.</p>
-                    </div>
-                </div>
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker-track">
+                <span>Comunicação Política</span><span>Storytelling</span><span>Produção Audiovisual</span>
+                <span>Cobertura de Campanha</span><span>Stories</span><span>Reels</span>
             </div>
-        </section>
+            <div class="ticker-track">
+                <span>Comunicação Política</span><span>Storytelling</span><span>Produção Audiovisual</span>
+                <span>Cobertura de Campanha</span><span>Stories</span><span>Reels</span>
+            </div>
+        </div>
 
-        <!-- Seção de Serviços -->
-        <section id="servicos" class="py-20" style="background-color: var(--secondary-bg);">
-            <div class="container mx-auto px-6">
-                <!-- Conteúdo Político -->
-                <div id="political-services" class="view-content" data-view="political">
-                    <div class="text-center mb-16 reveal">
-                        <h3 class="text-4xl font-bold text-white">Serviços para sua Campanha</h3>
-                        <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Soluções completas para fortalecer sua presença digital e gerar conexão autêntica com o eleitor.</p>
-                        <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
-                    </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="service-card p-8 rounded-2xl text-center reveal">
-                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-mobile-alt"></i></div>
-                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Stories e Coberturas</h4>
-                            <p class="text-gray-400">Visitas, caminhadas, reuniões e bastidores capturados em tempo real com qualidade profissional.</p>
-                        </div>
-                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 150ms;">
-                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-video"></i></div>
-                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Reels e Vídeos Curtos</h4>
-                            <p class="text-gray-400">Conteúdo otimizado para Instagram e TikTok com estratégia de alcance e engajamento digital.</p>
-                        </div>
-                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 300ms;">
-                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-bullseye"></i></div>
-                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Vídeos Institucionais</h4>
-                            <p class="text-gray-400">Apresentação de propostas e trajetória com narrativa emocional e alta qualidade visual.</p>
-                        </div>
-                    </div>
+        <!-- ============================ 01 SOBRE ============================ -->
+        <section class="section" id="sobre">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">01</span>
+                    <h2>Sobre</h2>
+                    <span class="aside">Quem está por trás da câmera</span>
                 </div>
 
-                <!-- Conteúdo Empresarial -->
-                <div id="business-services" class="view-content" data-view="business">
-                    <div class="text-center mb-16 reveal">
-                        <h3 class="text-4xl font-bold text-white">Serviços para sua Empresa</h3>
-                        <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Soluções completas para fortalecer sua marca e criar uma conexão duradoura com seu público.</p>
-                        <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
-                    </div>
-                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="service-card p-8 rounded-2xl text-center reveal">
-                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-building"></i></div>
-                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Vídeos Corporativos</h4>
-                            <p class="text-gray-400">Apresente sua empresa, cultura e valores de forma profissional e impactante.</p>
-                        </div>
-                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 150ms;">
-                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-box-open"></i></div>
-                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Vídeos de Produto</h4>
-                            <p class="text-gray-400">Demonstre seus produtos em ação, destacando benefícios e funcionalidades de forma criativa.</p>
-                        </div>
-                        <div class="service-card p-8 rounded-2xl text-center reveal" style="transition-delay: 300ms;">
-                            <div class="icon-container text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fas fa-calendar-check"></i></div>
-                            <h4 class="text-xl font-bold mb-2" style="color: var(--accent);">Cobertura de Eventos</h4>
-                            <p class="text-gray-400">Registre lançamentos, conferências e eventos corporativos, gerando conteúdo valioso.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Seção Experiência -->
-        <section id="experiencia" class="py-20" style="background-color: var(--primary-bg);">
-            <div id="political-experience" class="view-content" data-view="political">
-                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                    <div class="reveal">
-                        <h3 class="text-5xl font-extrabold mb-10 leading-tight">Experiência em<br>Campanhas Reais</h3>
-                        <div class="space-y-6">
-                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">Santa Rosa do Piauí</div><p class="text-gray-400">Cobertura política municipal, do prefeito Marlon Sousa – 2024.</p></div>
-                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">Colônia do Piauí</div><p class="text-gray-400">Cobertura da caminhada final de campanha do prefeito Selindo Mauro – 2024.</p></div>
-                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">São Miguel do Fidalgo</div><p class="text-gray-400">Cobertura da carreata de campanha do prefeito Dr. Erimar Soares – 2024.</p></div>
-                             <div class="flex items-center gap-4"><div class="political-gradient-tag py-2 px-5 rounded-full font-bold text-sm shrink-0" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));">Paes Landim</div><p class="text-gray-400">Registros de posse e reuniões do prefeito Francinaldo Moraes – 2024/2025.</p></div>
-                        </div>
-                    </div>
-                    <div class="flex justify-center reveal" style="transition-delay: 200ms;">
-                        <img src="midia/antoniel.png" alt="Foto de Antoniel de Sousa" class="rounded-2xl object-cover glowing-border aspect-[3/4] max-w-sm w-full" style="box-shadow: 0 8px 40px rgba(142,36,170,0.3);">
-                    </div>
-                </div>
-            </div>
-            <div id="business-experience" class="view-content" data-view="business">
-                <div class="container mx-auto px-6 text-center">
-                    <h3 class="text-4xl font-bold mb-2 reveal">Cases de Sucesso</h3>
-                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto reveal">Parcerias que geraram resultados e fortaleceram marcas.</p>
-                    <div class="w-24 h-1 mx-auto mt-4 rounded mb-12 reveal" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
-                    <div class="max-w-4xl mx-auto reveal">
-                        <div class="p-8 rounded-2xl border text-left" style="background-color: var(--box-bg); border-color: var(--border-color);">
-                            <h4 class="text-2xl font-bold mb-4" style="color: var(--accent);">Projetos de Alto Impacto</h4>
-                            <p class="text-gray-300 mb-6">Atuo com empresas de diversos segmentos, ajudando a construir narrativas visuais que aumentam o engajamento, fortalecem a presença digital e impulsionam as vendas.</p>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Lançamento de Produtos</span>
-                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Marketing de Conteúdo</span>
-                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Eventos Corporativos</span>
-                                <span class="bg-gray-700 text-gray-200 py-2 px-4 rounded-full text-sm">Branding e Posicionamento</span>
+                <div class="about-grid">
+                    <figure class="about-photo reveal">
+                        <img src="midia/sobremim.jpeg" alt="Antoniel de Sousa em cobertura" loading="lazy"
+                            decoding="async">
+                        <figcaption>Antoniel de Sousa — Storymaker e Vídeomaker Mobile</figcaption>
+                    </figure>
+
+                    <div class="about-text reveal" style="--d:140ms">
+                        <p class="big">Sou Antoniel Sousa, especialista em mídias sociais e apaixonado por contar
+                            histórias autênticas através da captação de imagens.</p>
+                        <p class="muted">Com experiência em Storymaker e Vídeomaker Mobile, busco eternizar momentos
+                            únicos e criar conexões que fazem a diferença.</p>
+                        <p class="muted">Neste portfólio, traduzo minha trajetória e meu compromisso em atuar de forma
+                            estratégica no cenário político, transformando ideias em resultados concretos e narrativas
+                            capazes de aproximar candidatos e mandatos das pessoas.</p>
+
+                        <dl class="meta-list">
+                            <div>
+                                <dt>Atuação</dt>
+                                <dd>Comunicação Política</dd>
                             </div>
-                        </div>
+                            <div>
+                                <dt>Formatos</dt>
+                                <dd>Stories · Reels · Vídeo</dd>
+                            </div>
+                            <div>
+                                <dt>Base</dt>
+                                <dd>Piauí — Brasil</dd>
+                            </div>
+                        </dl>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Portfólio (Político e Empresarial) -->
-        <section id="political-portfolio" class="view-content py-20" data-view="political" style="background-color: var(--secondary-bg);">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <h3 class="text-4xl font-bold">Portfólio em Vídeo</h3>
-                    <p class="text-gray-400 mt-2">Veja exemplos reais do trabalho de Antoniel.</p>
-                    <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
+        <!-- ============================ 02 ATUAÇÃO ============================ -->
+        <section class="section" id="atuacao">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">02</span>
+                    <h2>Atuação</h2>
+                    <span class="aside">Serviços para sua campanha</span>
                 </div>
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <div class="reveal">
-                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">Santa Rosa do Piauí</h4>
-                        <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.28.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.31.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.33.mp4"></video>
-                        </div>
-                    </div>
-                    <div class="reveal" style="transition-delay: 100ms;">
-                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">Colônia do Piauí</h4>
-                        <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.50.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.53.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.55.mp4"></video>
-                        </div>
-                    </div>
-                    <div class="reveal" style="transition-delay: 200ms;">
-                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">São Miguel do Fidalgo</h4>
-                        <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.18.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.21.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.23.mp4"></video>
-                        </div>
-                    </div>
-                    <div class="reveal" style="transition-delay: 300ms;">
-                        <h4 class="text-xl font-bold mb-4 text-center" style="color: var(--accent);">Paes Landim</h4>
-                        <div class="flex flex-col gap-4">
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.55.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.58.mp4"></video>
-                            <video controls class="rounded-lg shadow-lg w-full glowing-border" src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.48.13.mp4"></video>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-12 p-5 rounded-xl bg-gradient-to-br from-[var(--accent)]/10 to-[var(--primary-bg)] border border-[var(--accent)] text-base text-[var(--text-primary)] shadow-inner max-w-3xl mx-auto">
-                    <i class="fas fa-quote-left text-[var(--accent)] text-2xl mb-2"></i>
-                    <p class="mb-2 font-medium">Tudo o que você viu até aqui não é apenas um portfólio, mas uma prova social concreta do meu trabalho em campanhas políticas reais. Em municípios como Santa Rosa do Piauí, Colônia do Piauí, São Miguel do Fidalgo e Paes Landim, tive a oportunidade de atuar como Vídeomaker Mobile e Storymaker, construindo narrativas visuais que aproximaram candidatos do povo e fortaleceram suas mensagens.</p>
-                    <p class="mb-2">Os resultados falam por si: <span class="font-bold text-[var(--accent)]">todos os candidatos que confiaram no meu trabalho foram eleitos prefeitos</span>. Isso reforça não só a qualidade técnica das produções, mas também a estratégia assertiva de comunicação que aplico em cada campanha.</p>
-                    <p class="italic">Mais do que registrar momentos, minha missão é transformar a caminhada política em uma história capaz de emocionar, engajar e gerar resultados reais.</p>
+
+                <div class="svc">
+                    <article class="svc-item reveal">
+                        <span class="num">01</span>
+                        <h3>Stories e Coberturas</h3>
+                        <p>Visitas, caminhadas, reuniões e bastidores capturados em tempo real com qualidade
+                            profissional.</p>
+                    </article>
+                    <article class="svc-item reveal" style="--d:100ms">
+                        <span class="num">02</span>
+                        <h3>Reels e Vídeos Curtos</h3>
+                        <p>Conteúdo otimizado para Instagram e TikTok com estratégia de alcance e engajamento digital.
+                        </p>
+                    </article>
+                    <article class="svc-item reveal" style="--d:200ms">
+                        <span class="num">03</span>
+                        <h3>Vídeos Institucionais</h3>
+                        <p>Apresentação de propostas e trajetória com narrativa emocional e alta qualidade visual.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Portfólio Empresarial (Destaques dos Stories) -->
-        <section id="business-portfolio" class="view-content py-20" data-view="business" style="background-color: var(--secondary-bg);">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <h3 class="text-4xl font-bold">Destaques dos Stories</h3>
-                    <p class="text-gray-400 mt-2">Resumos criados por Antoniel para empresas.</p>
-                    <div class="w-24 h-1 mx-auto mt-4 rounded" style="background: linear-gradient(90deg, var(--accent), var(--accent-hover));"></div>
+        <!-- ============================ 03 EXPERIÊNCIA ============================ -->
+        <section class="section" id="experiencia">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">03</span>
+                    <h2>Experiência</h2>
+                    <span class="aside">Campanhas reais</span>
                 </div>
-                <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-                    <div class="service-card p-8 rounded-2xl flex flex-col justify-between reveal">
+
+                <div class="tl">
+                    <article class="tl-item reveal">
+                        <span class="tl-year">2024</span>
+                        <h3>Santa Rosa do Piauí</h3>
+                        <p>Cobertura política municipal, do prefeito Marlon Sousa.</p>
+                    </article>
+                    <article class="tl-item reveal" style="--d:80ms">
+                        <span class="tl-year">2024</span>
+                        <h3>Colônia do Piauí</h3>
+                        <p>Cobertura da caminhada final de campanha do prefeito Selindo Mauro.</p>
+                    </article>
+                    <article class="tl-item reveal" style="--d:160ms">
+                        <span class="tl-year">2024</span>
+                        <h3>São Miguel do Fidalgo</h3>
+                        <p>Cobertura da carreata de campanha do prefeito Dr. Erimar Soares.</p>
+                    </article>
+                    <article class="tl-item reveal" style="--d:240ms">
+                        <span class="tl-year">2024 / 2025</span>
+                        <h3>Paes Landim</h3>
+                        <p>Registros de posse e reuniões do prefeito Francinaldo Moraes.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ 04 TRABALHOS ============================ -->
+        <section class="section" id="trabalhos">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">04</span>
+                    <h2>Trabalhos</h2>
+                    <span class="aside">Cases em vídeo</span>
+                </div>
+
+                <!-- Case 01 -->
+                <article class="case">
+                    <div class="case-head reveal">
                         <div>
-                            <p class="text-gray-300 text-base mb-6" style="white-space: pre-line;">Atuei como Storymaker e Vídeomaker Mobile na cobertura oficial da Jornada TEAbraço Oeiras, registrando e transmitindo os principais momentos do evento em tempo real pelo Instagram. Desenvolvi conteúdos dinâmicos em formato de stories, com captação, edição e publicação imediata, garantindo agilidade na comunicação e engajamento do público durante toda a programação.</p>
+                            <h3><span class="num">01</span><br>Santa Rosa do Piauí</h3>
                         </div>
-                        <div class="mt-auto pt-4 text-right">
-                            <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDk1MDk2MjU0NTE1ODQ1?igsh=dTNrZmNhbDMxdGdm" target="_blank" class="hover:underline font-semibold flex items-center justify-end" style="color: var(--accent);">
-                                <i class="fas fa-link mr-2"></i>Cobertura – Jornada TEAbraço
-                            </a>
-                        </div>
-                    </div>
-                    <div class="service-card p-8 rounded-2xl flex flex-col justify-between reveal" style="transition-delay: 200ms;">
                         <div>
-                            <p class="text-gray-300 text-base mb-6" style="white-space: pre-line;">Na cobertura do evento Essenz, atuei como Storymaker e Vídeomaker Mobile, gerando conteúdos em tempo real para mostrar a essência e os destaques do evento. Fiz stories que envolviam captação de áudio e imagem, edição rápida e publicação imediata, mantendo o público engajado e conectado com tudo que rolava.</p>
+                            <div class="case-meta"><span>2024</span><span>Piauí</span><span>Cobertura de campanha</span>
+                            </div>
+                            <p class="case-desc">Cobertura política municipal do prefeito Marlon Sousa.</p>
                         </div>
-                        <div class="mt-auto pt-4 text-right">
-                            <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDQxOTYyMTEyNTMyMjQw?igsh=MTZoeGlpYTUzcWducg==" target="_blank" class="hover:underline font-semibold flex items-center justify-end" style="color: var(--accent);">
-                                <i class="fas fa-link mr-2"></i>Cobertura – Evento Essenz
+                    </div>
+                    <div class="vid-grid reveal" style="--d:120ms">
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Santa Rosa do Piauí" data-idx="01"
+                                aria-label="Assistir vídeo 01 — Santa Rosa do Piauí">
+                                <video src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.28.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">01</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Santa Rosa do Piauí</span><span>01/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Santa Rosa do Piauí" data-idx="02"
+                                aria-label="Assistir vídeo 02 — Santa Rosa do Piauí">
+                                <video src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.31.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">02</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Santa Rosa do Piauí</span><span>02/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Santa Rosa do Piauí" data-idx="03"
+                                aria-label="Assistir vídeo 03 — Santa Rosa do Piauí">
+                                <video src="midia/SantaRosa/WhatsApp Video 2025-09-21 at 21.46.33.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">03</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Santa Rosa do Piauí</span><span>03/03</span></figcaption>
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Case 02 -->
+                <article class="case case-alt">
+                    <div class="case-head reveal">
+                        <div>
+                            <h3><span class="num">02</span><br>Colônia do Piauí</h3>
+                        </div>
+                        <div>
+                            <div class="case-meta"><span>2024</span><span>Piauí</span><span>Caminhada final</span></div>
+                            <p class="case-desc">Cobertura da caminhada final de campanha do prefeito Selindo Mauro.</p>
+                        </div>
+                    </div>
+                    <div class="vid-grid reveal" style="--d:120ms">
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Colônia do Piauí" data-idx="01"
+                                aria-label="Assistir vídeo 01 — Colônia do Piauí">
+                                <video src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.50.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">01</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Colônia do Piauí</span><span>01/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Colônia do Piauí" data-idx="02"
+                                aria-label="Assistir vídeo 02 — Colônia do Piauí">
+                                <video src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.53.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">02</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Colônia do Piauí</span><span>02/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Colônia do Piauí" data-idx="03"
+                                aria-label="Assistir vídeo 03 — Colônia do Piauí">
+                                <video src="midia/colonia/WhatsApp Video 2025-09-21 at 21.46.55.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">03</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Colônia do Piauí</span><span>03/03</span></figcaption>
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Case 03 -->
+                <article class="case">
+                    <div class="case-head reveal">
+                        <div>
+                            <h3><span class="num">03</span><br>São Miguel do Fidalgo</h3>
+                        </div>
+                        <div>
+                            <div class="case-meta"><span>2024</span><span>Piauí</span><span>Carreata</span></div>
+                            <p class="case-desc">Cobertura da carreata de campanha do prefeito Dr. Erimar Soares.</p>
+                        </div>
+                    </div>
+                    <div class="vid-grid reveal" style="--d:120ms">
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="São Miguel do Fidalgo" data-idx="01"
+                                aria-label="Assistir vídeo 01 — São Miguel do Fidalgo">
+                                <video src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.18.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">01</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>São Miguel do Fidalgo</span><span>01/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="São Miguel do Fidalgo" data-idx="02"
+                                aria-label="Assistir vídeo 02 — São Miguel do Fidalgo">
+                                <video src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.21.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">02</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>São Miguel do Fidalgo</span><span>02/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="São Miguel do Fidalgo" data-idx="03"
+                                aria-label="Assistir vídeo 03 — São Miguel do Fidalgo">
+                                <video src="midia/SaoMiguel/WhatsApp Video 2025-09-21 at 21.47.23.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">03</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>São Miguel do Fidalgo</span><span>03/03</span></figcaption>
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- Case 04 -->
+                <article class="case case-alt">
+                    <div class="case-head reveal">
+                        <div>
+                            <h3><span class="num">04</span><br>Paes Landim</h3>
+                        </div>
+                        <div>
+                            <div class="case-meta"><span>2024 / 2025</span><span>Piauí</span><span>Posse e
+                                    reuniões</span></div>
+                            <p class="case-desc">Registros de posse e reuniões do prefeito Francinaldo Moraes.</p>
+                        </div>
+                    </div>
+                    <div class="vid-grid reveal" style="--d:120ms">
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Paes Landim" data-idx="01"
+                                aria-label="Assistir vídeo 01 — Paes Landim">
+                                <video src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.55.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">01</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Paes Landim</span><span>01/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Paes Landim" data-idx="02"
+                                aria-label="Assistir vídeo 02 — Paes Landim">
+                                <video src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.47.58.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">02</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Paes Landim</span><span>02/03</span></figcaption>
+                        </figure>
+                        <figure class="vid">
+                            <button class="vid-frame" data-label="Paes Landim" data-idx="03"
+                                aria-label="Assistir vídeo 03 — Paes Landim">
+                                <video src="midia/PaesLandim/WhatsApp Video 2025-09-21 at 21.48.13.mp4" muted loop
+                                    playsinline preload="metadata"></video>
+                                <span class="vid-ph"><span class="idx">03</span><span class="tag">Vídeo</span></span>
+                                <span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </button>
+                            <figcaption><span>Paes Landim</span><span>03/03</span></figcaption>
+                        </figure>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- ============================ MANIFESTO ============================ -->
+        <section class="wrap">
+            <div class="quote reveal">
+                <span class="mark" aria-hidden="true">“</span>
+                <div>
+                    <p>Tudo o que você viu até aqui não é apenas um portfólio, mas uma prova social concreta do meu
+                        trabalho em campanhas políticas reais.</p>
+                    <p>Em municípios como Santa Rosa do Piauí, Colônia do Piauí, São Miguel do Fidalgo e Paes Landim,
+                        tive a oportunidade de atuar como Vídeomaker Mobile e Storymaker, construindo narrativas visuais
+                        que aproximaram candidatos do povo e fortaleceram suas mensagens. Os resultados falam por si:
+                        <strong>todos os candidatos que confiaram no meu trabalho foram eleitos prefeitos</strong>.</p>
+                    <p class="end">Mais do que registrar momentos, minha missão é transformar a caminhada política em
+                        uma história capaz de emocionar, engajar e gerar resultados reais.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="rule">
+
+        <!-- ============================ 05 ROGÉRIO CASTRO ============================ -->
+        <section class="section" id="rogerio-castro">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">05</span>
+                    <h2>Rogério Castro</h2>
+                    <span class="aside">Trabalhos</span>
+                </div>
+
+                <div class="reels reveal" style="--d:80ms">
+                    <figure class="reel">
+                        <div class="reel-frame" data-reel="DSum5qVgKPI">
+                            <div class="reel-ph">
+                                <span class="idx">01</span>
+                                <span class="tag">Reel</span>
+                            </div>
+                            <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></span>
+                        </div>
+                        <a class="reel-cap" href="https://www.instagram.com/reel/DSum5qVgKPI/?igsh=MTN1aDhzODduaXBrYg=="
+                            target="_blank" rel="noopener">
+                            <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </figure>
+                    <figure class="reel">
+                        <div class="reel-frame" data-reel="DSxdEA6ACQb">
+                            <div class="reel-ph">
+                                <span class="idx">02</span>
+                                <span class="tag">Reel</span>
+                            </div>
+                            <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></span>
+                        </div>
+                        <a class="reel-cap" href="https://www.instagram.com/reel/DSxdEA6ACQb/?igsh=MXVmMXp0ZWF2d2UwZg=="
+                            target="_blank" rel="noopener">
+                            <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </figure>
+                    <figure class="reel">
+                        <div class="reel-frame" data-reel="DSz_PrkgAKc">
+                            <div class="reel-ph">
+                                <span class="idx">03</span>
+                                <span class="tag">Reel</span>
+                            </div>
+                            <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></span>
+                        </div>
+                        <a class="reel-cap" href="https://www.instagram.com/reel/DSz_PrkgAKc/?igsh=MXJsdWEybGVzdWd3ZQ=="
+                            target="_blank" rel="noopener">
+                            <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </figure>
+                    <figure class="reel">
+                        <div class="reel-frame" data-reel="DS2t-_MADm6">
+                            <div class="reel-ph">
+                                <span class="idx">04</span>
+                                <span class="tag">Reel</span>
+                            </div>
+                            <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></span>
+                        </div>
+                        <a class="reel-cap" href="https://www.instagram.com/reel/DS2t-_MADm6/?igsh=a3pkYzFnbHAyczk3"
+                            target="_blank" rel="noopener">
+                            <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ 06 OUTROS TRABALHOS ============================ -->
+        <section class="section" id="outros-trabalhos">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">06</span>
+                    <h2>Outros trabalhos</h2>
+                    <span class="aside">15 registros</span>
+                </div>
+
+                <button class="acc-btn" id="acc-btn" aria-expanded="false" aria-controls="acc-panel">
+                    <span>Ver lista completa</span>
+                    <span class="sign" aria-hidden="true">+</span>
+                </button>
+
+                <div class="acc-panel" id="acc-panel">
+                    <div class="reels reels-sm">
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="C_7HLj_sKZL">
+                                <div class="reel-ph">
+                                    <span class="idx">01</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/C_7HLj_sKZL/?igsh=YzBqbnJ1MWZua3Iz"
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
                             </a>
-                        </div>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="C__XaE9v7Kf">
+                                <div class="reel-ph">
+                                    <span class="idx">02</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/C__XaE9v7Kf/?igsh=MXU2a2trYnlucWMwOQ=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DALVf6ousih">
+                                <div class="reel-ph">
+                                    <span class="idx">03</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/DALVf6ousih/?igsh=ZXNjOXJ0YzNnZ3hp"
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DAMNMTuvmyK">
+                                <div class="reel-ph">
+                                    <span class="idx">04</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DAMNMTuvmyK/?igsh=MTNhcDdiZTE3Znl0dA=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DAe4v3IoowF">
+                                <div class="reel-ph">
+                                    <span class="idx">05</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DAe4v3IoowF/?igsh=MWlmanNjdnpjenQzMQ=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DAgd274u-I8">
+                                <div class="reel-ph">
+                                    <span class="idx">06</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DAgd274u-I8/?igsh=MW54N2J6czQzMWljdA=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DApRN3EI_Wj">
+                                <div class="reel-ph">
+                                    <span class="idx">07</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DApRN3EI_Wj/?igsh=MXZyNXdmaG53Y252Zw=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DAr56_aIDC4">
+                                <div class="reel-ph">
+                                    <span class="idx">08</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DAr56_aIDC4/?igsh=MTEyZm50enhpYWtyZg=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DAtEdH7umFv">
+                                <div class="reel-ph">
+                                    <span class="idx">09</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/DAtEdH7umFv/?igsh=cGNkMDFjMTg4bmtz"
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DAthfTbOPtw">
+                                <div class="reel-ph">
+                                    <span class="idx">10</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/DAthfTbOPtw/?igsh=c3BsMmlxNnNyYzBy"
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DESWduGOKhg">
+                                <div class="reel-ph">
+                                    <span class="idx">11</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/DESWduGOKhg/?igsh=czBiajA0Z3Nscmc0"
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DETJnwyvo-j">
+                                <div class="reel-ph">
+                                    <span class="idx">12</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DETJnwyvo-j/?igsh=MWt5bHNicmM2a2U5YQ=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DEUy-vlOoz7">
+                                <div class="reel-ph">
+                                    <span class="idx">13</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/DEUy-vlOoz7/?igsh=N2JhZXd4NW02Zmg="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DEfIT-5O89k">
+                                <div class="reel-ph">
+                                    <span class="idx">14</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap" href="https://www.instagram.com/reel/DEfIT-5O89k/?igsh=NTRkMnplbzA3ZTI5"
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
+                        <figure class="reel">
+                            <div class="reel-frame" data-reel="DEf2yzGPa6F">
+                                <div class="reel-ph">
+                                    <span class="idx">15</span>
+                                    <span class="tag">Reel</span>
+                                </div>
+                                <span class="reel-play"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg></span>
+                            </div>
+                            <a class="reel-cap"
+                                href="https://www.instagram.com/reel/DEf2yzGPa6F/?igsh=MXR2M2o3cnk0M2lneA=="
+                                target="_blank" rel="noopener">
+                                <span>Ver no Instagram</span><span class="arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </figure>
                     </div>
-                </div>
-                <div class="mt-12 p-5 rounded-xl bg-gradient-to-br from-[var(--accent)]/10 to-[var(--primary-bg)] border border-[var(--accent)] text-base text-[var(--text-primary)] shadow-inner max-w-3xl mx-auto">
-                    <i class="fas fa-quote-left text-[var(--accent)] text-2xl mb-2"></i>
-                    <p class="mb-2 font-medium">Cada vídeo produzido e cada cobertura em tempo real que realizei para o ramo empresarial foi pensado com estratégia, emoção e qualidade, sempre com o objetivo de entregar resultados que conectam marcas ao seu público de forma autêntica.</p>
-                    <p class="mb-2">Este portfólio apresenta apenas alguns exemplos do que já construí, mas meu trabalho vai muito além do que está aqui mostrado. São diversas experiências já executadas, cada uma com sua particularidade e impacto, que reforçam meu compromisso em transformar ideias em conteúdos marcantes.</p>
-                    <p class="italic">Mais do que registrar momentos, minha missão é contar histórias que fortalecem identidades, geram conexão e impulsionam resultados.</p>
                 </div>
             </div>
         </section>
-        
 
-        <!-- Seção "Mais Trabalhos" -->
-        <section id="mais-trabalhos" class="py-10">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto">
-                    <button id="toggle-mais-trabalhos" class="w-full flex justify-between items-center rounded-2xl px-8 py-5 mb-6 text-xl font-extrabold focus:outline-none transition-colors glowing-border shadow-lg hover:scale-105 hover:shadow-2xl" style="background: linear-gradient(90deg, var(--box-bg) 80%, var(--accent) 100%); color: var(--accent);">
-                        <span class="flex items-center gap-3"><i class="fas fa-folder-open text-2xl"></i>Ver Mais Trabalhos</span>
-                        <i id="icon-mais-trabalhos" class="fas fa-chevron-down transition-transform duration-500"></i>
-                    </button>
-                    <div id="mais-trabalhos-content" class="rounded-2xl p-0 border-0 overflow-hidden transition-all duration-700" style="background: none; border: none;">
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <!-- Conteúdo Político -->
-                            <div class="view-content" data-view="political">
-                                <div class="bg-[var(--box-bg)] glowing-border rounded-2xl p-7 flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500">
-                                    <div class="flex items-center mb-4">
-                                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] text-white text-2xl mr-3"><i class="fas fa-landmark"></i></div>
-                                        <h4 class="text-2xl font-bold" style="color: var(--accent);">Políticos</h4>
-                                    </div>
-                                    <ul class="space-y-2 text-base">
-                                        <li><a href="https://www.instagram.com/reel/C_7HLj_sKZL/?igsh=YzBqbnJ1MWZua3Iz" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 1</a></li>
-                                        <li><a href="https://www.instagram.com/reel/C__XaE9v7Kf/?igsh=MXU2a2trYnlucWMwOQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 2</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DALVf6ousih/?igsh=ZXNjOXJ0YzNnZ3hp" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 3</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DAMNMTuvmyK/?igsh=MTNhcDdiZTE3Znl0dA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 4</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DAe4v3IoowF/?igsh=MWlmanNjdnpjenQzMQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 5</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DAgd274u-I8/?igsh=MW54N2J6czQzMWljdA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 6</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DApRN3EI_Wj/?igsh=MXZyNXdmaG53Y252Zw==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 7</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DAr56_aIDC4/?igsh=MTEyZm50enhpYWtyZg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 8</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DAtEdH7umFv/?igsh=cGNkMDFjMTg4bmtz" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 9</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DAthfTbOPtw/?igsh=c3BsMmlxNnNyYzBy" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 10</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DESWduGOKhg/?igsh=czBiajA0Z3Nscmc0" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 11</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DETJnwyvo-j/?igsh=MWt5bHNicmM2a2U5YQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 12</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DEUy-vlOoz7/?igsh=N2JhZXd4NW02Zmg=" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 13</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DEfIT-5O89k/?igsh=NTRkMnplbzA3ZTI5" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 14</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DEf2yzGPa6F/?igsh=MXR2M2o3cnk0M2lneA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Político 15</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Conteúdo Empresarial -->
-                            <div class="view-content" data-view="business">
-                                <div class="bg-[var(--box-bg)] glowing-border rounded-2xl p-7 flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500">
-                                    <div class="flex items-center mb-4">
-                                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] text-white text-2xl mr-3"><i class="fas fa-briefcase"></i></div>
-                                        <h4 class="text-2xl font-bold" style="color: var(--accent);">Empresariais</h4>
-                                    </div>
-                                    <ul class="space-y-2 text-base">
-                                        <li><a href="https://www.instagram.com/reel/DAdxRtLuTvT/?igsh=MW8wd2ZqdTBreDdldA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 1</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DDUfm-wOUlU/?igsh=MTBscHhjdWZhOGF0Yg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 2</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DDsmR5tPaqs/?igsh=MWZha2F5Ynl6bTNm" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 3</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DEx-vnnuVha/?igsh=bGdoYXd4emNwamp3" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 4</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DHbHds-sjmA/?igsh=MXZ3bjg3a3lsOWU0dw==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 5</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DHwdrm6h3Ty/?igsh=cGFzb3FpZDJkN3Bl" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 6</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DIBzMinM1-B/?igsh=NnI5MjBsMDQxdDNl" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 7</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DIJdanPxPP3/?igsh=MWtyczV2NWwydWFuag==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 8</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DJ47lQhBUYj/?igsh=MWtvMDVhbjJidjBiMQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 9</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DKAq3Fqh_XD/?igsh=aTNuYm15b2swNWQy" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 10</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DG-sKnasDW9/?igsh=MXF4Mjk3YzQxNXhpbg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 11</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DHzCfl6Oy6O/?igsh=MTdleWs2YTUzbXU3eQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 12</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DH4M82kO3kk/?igsh=MjI3cTF1bTJ6M2li" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 13</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DH66sprpDm1/?igsh=YjIwa20zeDNtZmpt" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 14</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DJIatZWImOq/?igsh=MW5pdGFhOXRnY3JmYg==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 15</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DJ7h8nqOKyO/?igsh=MWt3Y2J5eW9uc3pvMQ==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 16</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DKXBiz-OpQB/?igsh=NmwyMWh0eDViZmN0" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 17</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DLNy6BAumj7/?igsh=cjI2amFnZW9zbW55" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 18</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DMWCh9-PTsw/?igsh=MTYxd2F2OXV5ZmJ0cw==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 19</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DN8TmCbjgy9/?igsh=ajc5ejd6YXJwamlw" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 20</a></li>
-                                        <li><a href="https://www.instagram.com/reel/DOOcKzMjv-g/?igsh=MWtkdTk1cHFmdzhrZA==" target="_blank" class="flex items-center gap-2 hover:underline font-medium text-[var(--text-primary)]"><i class="fab fa-instagram text-lg text-[var(--accent)]"></i>Reel Empresarial 21</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+        <!-- ============================ 07 CONTATO ============================ -->
+        <section class="contact" id="contato">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="num">07</span>
+                    <h2>Contato</h2>
+                    <span class="aside">Disponível para campanhas e mandatos</span>
+                </div>
+
+                <h2 class="contact-title reveal" style="--d:80ms">
+                    Vamos contar<br>a próxima<br><span class="serif-it">história?</span>
+                </h2>
+
+                <a href="https://wa.me/5589994637481" target="_blank" rel="noopener" class="contact-cta reveal"
+                    style="--d:180ms">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z" />
+                    </svg>
+                    Falar no WhatsApp
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <div class="contact-list reveal" style="--d:240ms">
+                    <a href="https://wa.me/5589994637481" target="_blank" rel="noopener">
+                        <span class="k">WhatsApp</span><span class="v">(89) 99463-7481</span>
+                    </a>
+                    <a href="https://instagram.com/antonielsousaas" target="_blank" rel="noopener">
+                        <span class="k">Instagram</span><span class="v">@antonielsousaas</span>
+                    </a>
+                    <a href="mailto:antonielsousa285@gmail.com">
+                        <span class="k">E-mail</span><span class="v">antonielsousa285@gmail.com</span>
+                    </a>
+                    <div>
+                        <span class="k">Base</span><span class="v">Piauí — Brasil</span>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Seção de Contato -->
-        <section id="contato" class="py-20 text-white" style="background-color: var(--primary-bg);">
-            <div class="container mx-auto px-6 text-center">
-                 <h3 class="text-4xl font-bold reveal">Vamos transformar sua comunicação?</h3>
-                 <p class="mt-4 mb-12 max-w-2xl mx-auto text-gray-300 reveal">Entre em contato e solicite um orçamento personalizado.</p>
-                 <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                     <div class="p-6 rounded-2xl text-center glowing-border w-full md:w-auto reveal" style="background-color: var(--box-bg);">
-                        <i class="fab fa-whatsapp text-4xl mb-3" style="color: var(--accent);"></i>
-                        <h4 class="font-bold text-lg">WhatsApp</h4>
-                        <a href="https://wa.me/5589994637481" target="_blank" class="hover:underline text-gray-300">(89) 99463-7481</a>
-                     </div>
-                     <div class="p-6 rounded-2xl text-center glowing-border w-full md:w-auto reveal" style="background-color: var(--box-bg); transition-delay: 150ms;">
-                        <i class="fab fa-instagram text-4xl mb-3" style="color: var(--accent);"></i>
-                        <h4 class="font-bold text-lg">Instagram</h4>
-                        <a href="https://instagram.com/antonielsousaas" target="_blank" class="hover:underline text-gray-300">@antonielsousaas</a>
-                     </div>
-                     <div class="p-6 rounded-2xl text-center glowing-border w-full md:w-auto reveal" style="background-color: var(--box-bg); transition-delay: 300ms;">
-                        <i class="fas fa-envelope text-4xl mb-3" style="color: var(--accent);"></i>
-                        <h4 class="font-bold text-lg">E-mail</h4>
-                        <a href="mailto:antonielsousa285@gmail.com" class="hover:underline text-gray-300">antonielsousa285@gmail.com</a>
-                     </div>
-                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="text-white py-6" style="background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
-        <div class="container mx-auto text-center text-gray-400 text-sm">
-            <p>&copy; 2025 Antoniel de Sousa. Todos os direitos reservados.</p>
+    <!-- ============================ RODAPÉ ============================ -->
+    <footer class="footer">
+        <div class="wrap footer-inner">
+            <p>&copy; 2025 Antoniel de Sousa</p>
+            <p>Comunicação Política · Storytelling · Audiovisual</p>
+            <a href="#topo" class="to-top">Voltar ao topo <span aria-hidden="true">↑</span></a>
         </div>
     </footer>
 
+    <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Reprodutor de vídeo">
+        <div class="lb-bar">
+            <p class="lb-cap"><span class="idx" id="lb-idx"></span><span id="lb-label"></span><span class="count"
+                    id="lb-count"></span></p>
+            <button class="lb-btn" id="lb-close" aria-label="Fechar">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+        </div>
+        <video id="lb-video" controls playsinline preload="metadata"></video>
+        <div class="lb-nav">
+            <button class="lb-btn" id="lb-prev" aria-label="Vídeo anterior">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" />
+                </svg>
+            </button>
+            <button class="lb-btn" id="lb-next" aria-label="Próximo vídeo">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5589994637481" target="_blank" rel="noopener" class="wa-float" id="wa-float"
+        aria-label="Falar no WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z" />
+        </svg>
+    </a>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navegação responsiva
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* ---------- Tema claro / escuro (persistido) ---------- */
+            const themeBtn = document.getElementById('theme-btn');
+            const setTheme = mode => {
+                document.documentElement.setAttribute('data-theme', mode);
+                localStorage.setItem('antoniel_theme', mode);
+            };
+            setTheme(localStorage.getItem('antoniel_theme') || 'dark');
+            themeBtn.addEventListener('click', () => {
+                const atual = document.documentElement.getAttribute('data-theme');
+                setTheme(atual === 'dark' ? 'light' : 'dark');
+            });
+
+            /* ---------- Menu mobile ---------- */
+            const burger = document.getElementById('burger');
             const mobileNav = document.getElementById('mobile-nav');
-            menuToggle.addEventListener('click', function() {
-                mobileNav.classList.toggle('hidden');
+            const fecharMenu = () => {
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                burger.setAttribute('aria-expanded', 'false');
+            };
+            burger.addEventListener('click', () => {
+                const aberto = document.body.classList.toggle('menu-open');
+                document.body.style.overflow = aberto ? 'hidden' : '';
+                burger.setAttribute('aria-expanded', String(aberto));
             });
-            // Fecha menu mobile ao clicar em um link
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.add('hidden');
-                });
+            mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', fecharMenu));
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && document.body.classList.contains('menu-open')) fecharMenu();
             });
 
-            // Função para atualizar o link do portfólio conforme a view
-            function updatePortfolioLinks(view) {
-                // Menu desktop
-                const mainNavPortfolio = mainNav.querySelector('a[href^="#political-portfolio"], a[href^="#business-portfolio"]');
-                if (mainNavPortfolio) {
-                    mainNavPortfolio.setAttribute('href', view === 'business' ? '#business-portfolio' : '#political-portfolio');
-                }
-                // Menu mobile
-                const mobileNavPortfolio = mobileNav.querySelector('a[href^="#political-portfolio"], a[href^="#business-portfolio"]');
-                if (mobileNavPortfolio) {
-                    mobileNavPortfolio.setAttribute('href', view === 'business' ? '#business-portfolio' : '#political-portfolio');
-                }
-            }
+            /* ---------- Header ao rolar + botão flutuante ---------- */
+            const header = document.getElementById('header');
+            const waFloat = document.getElementById('wa-float');
+            const aoRolar = () => {
+                const y = window.scrollY;
+                header.classList.toggle('is-scrolled', y > 40);
+                waFloat.classList.toggle('is-on', y > window.innerHeight * 0.7);
+            };
+            window.addEventListener('scroll', aoRolar, { passive: true });
+            aoRolar();
 
-            // Glider e view
-            const glider = document.getElementById('glider');
-            const politicalBtn = document.getElementById('political-btn');
-            const businessBtn = document.getElementById('business-btn');
-            window.updateGliderPosition = (view) => {
-                const targetButton = view === 'political' ? politicalBtn : businessBtn;
-                if (targetButton) {
-                    const container = targetButton.parentElement;
-                    const targetOffsetLeft = targetButton.offsetLeft;
-                    const containerPaddingLeft = parseFloat(window.getComputedStyle(container).paddingLeft);
-                    glider.style.width = `${targetButton.offsetWidth}px`;
-                    glider.style.transform = `translateX(${targetOffsetLeft - containerPaddingLeft}px)`;
-                }
-            }
-            window.switchView = function(view) {
-                localStorage.setItem('antoniel_selected_view', view);
-                updateGliderPosition(view);
-                politicalBtn.classList.toggle('active', view === 'political');
-                businessBtn.classList.toggle('active', view === 'business');
-                document.querySelectorAll('.view-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                setTimeout(() => {
-                    document.querySelectorAll(`[data-view="${view}"]`).forEach(content => {
-                        content.classList.add('active');
-                    });
-                }, 50);
-                updatePortfolioLinks(view);
-            }
-            // Acordeão "Mais Trabalhos"
-            const accordionBtn = document.getElementById('toggle-mais-trabalhos');
-            const accordionContent = document.getElementById('mais-trabalhos-content');
-            const accordionIcon = document.getElementById('icon-mais-trabalhos');
-            if (accordionBtn) {
-                accordionBtn.addEventListener('click', function() {
-                    accordionIcon.classList.toggle('rotate-180');
-                    if (accordionContent.style.maxHeight) {
-                        accordionContent.style.maxHeight = null;
-                    } else {
-                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
-                    }
-                });
-            }
-            // Animação ao rolar
-            const observer = new IntersectionObserver((entries) => {
+            /* ---------- Reveal no scroll ---------- */
+            const revealObserver = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            // Tema light/dark
-            const themeBtn = document.getElementById('toggle-theme');
-            const themeIcon = document.getElementById('theme-icon');
-            function setTheme(mode) {
-                if (mode === 'light') {
-                    document.body.classList.add('light-mode');
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                } else {
-                    document.body.classList.remove('light-mode');
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
+            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            /* ---------- Link ativo na navegação ---------- */
+            const links = document.querySelectorAll('.nav a');
+            const secoes = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+            const navObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id));
+                    }
+                });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            secoes.forEach(s => navObserver.observe(s));
+
+            /* ---------- Previews dos reels (embed do Instagram sob demanda) ----------
+               data-cover opcional: se houver uma capa local em midia/capas/, ela é
+               exibida primeiro e o embed só carrega no clique. */
+            const carregarReel = frame => {
+                if (frame.dataset.carregado) return;
+                frame.dataset.carregado = '1';
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://www.instagram.com/reel/' + frame.dataset.reel + '/embed';
+                iframe.loading = 'lazy';
+                iframe.title = 'Reel no Instagram';
+                iframe.setAttribute('scrolling', 'no');
+                iframe.setAttribute('allowtransparency', 'true');
+                iframe.addEventListener('load', () => iframe.classList.add('is-ready'));
+                frame.appendChild(iframe);
+            };
+
+            const reelFrames = document.querySelectorAll('.reel-frame');
+            const reelObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    obs.unobserve(entry.target);
+                    if (!entry.target.dataset.cover) carregarReel(entry.target);
+                });
+            }, { rootMargin: '300px 0px' });
+
+            reelFrames.forEach(frame => {
+                const capa = frame.dataset.cover;
+                if (capa) {
+                    const img = new Image();
+                    img.src = capa;
+                    img.alt = '';
+                    img.className = 'reel-cover';
+                    img.loading = 'lazy';
+                    frame.prepend(img);
+                    frame.style.cursor = 'pointer';
+                    frame.addEventListener('click', () => carregarReel(frame), { once: true });
                 }
-                localStorage.setItem('antoniel_theme', mode);
+                reelObserver.observe(frame);
+            });
+
+            /* ---------- Acordeão "Outros trabalhos" ---------- */
+            const accBtn = document.getElementById('acc-btn');
+            const accPanel = document.getElementById('acc-panel');
+            const ajustarPainel = () => {
+                if (accBtn.getAttribute('aria-expanded') === 'true') {
+                    accPanel.style.maxHeight = accPanel.scrollHeight + 'px';
+                }
+            };
+            accBtn.addEventListener('click', () => {
+                const aberto = accBtn.getAttribute('aria-expanded') === 'true';
+                accBtn.setAttribute('aria-expanded', String(!aberto));
+                accPanel.style.maxHeight = aberto ? null : accPanel.scrollHeight + 'px';
+            });
+            window.addEventListener('resize', ajustarPainel);
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(ajustarPainel).observe(accPanel.firstElementChild);
             }
-            themeBtn.addEventListener('click', function() {
-                const isLight = document.body.classList.contains('light-mode');
-                setTheme(isLight ? 'dark' : 'light');
+
+            /* ---------- Galeria de vídeos: prévia no hover + lightbox ---------- */
+            const vidFrames = [...document.querySelectorAll('.vid-frame')];
+            const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const lb = document.getElementById('lightbox');
+            const lbVideo = document.getElementById('lb-video');
+            const lbIdx = document.getElementById('lb-idx');
+            const lbLabel = document.getElementById('lb-label');
+            const lbCount = document.getElementById('lb-count');
+            let atual = 0;
+
+            /* A proporção real de cada vídeo define a moldura, evitando cortes */
+            vidFrames.forEach(frame => {
+                const video = frame.querySelector('video');
+                video.addEventListener('loadedmetadata', () => {
+                    if (video.videoWidth) frame.style.setProperty('--ar', video.videoWidth + '/' + video.videoHeight);
+                });
             });
-            // Carrega tema salvo
-            const savedTheme = localStorage.getItem('antoniel_theme') || 'dark';
-            setTheme(savedTheme);
-            // Carrega a view salva ou padrão
-            const savedView = localStorage.getItem('antoniel_selected_view') || 'political';
-            switchView(savedView);
-            updatePortfolioLinks(savedView);
-            // Ajusta glider ao redimensionar
-            window.addEventListener('resize', () => {
-                const currentView = localStorage.getItem('antoniel_selected_view') || 'political';
-                updateGliderPosition(currentView);
+
+            /* Prévia silenciosa ao passar o mouse (desktop) */
+            if (!semMovimento && window.matchMedia('(hover: hover)').matches) {
+                vidFrames.forEach(frame => {
+                    const video = frame.querySelector('video');
+                    frame.addEventListener('mouseenter', () => {
+                        frame.classList.add('is-preview');
+                        video.play().catch(() => frame.classList.remove('is-preview'));
+                    });
+                    frame.addEventListener('mouseleave', () => {
+                        frame.classList.remove('is-preview');
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                });
+            }
+
+            const abrir = i => {
+                atual = (i + vidFrames.length) % vidFrames.length;
+                const frame = vidFrames[atual];
+                const video = frame.querySelector('video');
+                video.pause();
+                frame.classList.remove('is-preview');
+                lbVideo.src = video.getAttribute('src');
+                lbIdx.textContent = frame.dataset.idx;
+                lbLabel.textContent = frame.dataset.label;
+                lbCount.textContent = (atual + 1) + ' / ' + vidFrames.length;
+                lb.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+                lbVideo.play().catch(() => { });
+            };
+            const fecharLb = () => {
+                lb.classList.remove('is-open');
+                lbVideo.pause();
+                lbVideo.removeAttribute('src');
+                lbVideo.load();
+                document.body.style.overflow = '';
+                vidFrames[atual].focus();
+            };
+
+            vidFrames.forEach((frame, i) => frame.addEventListener('click', () => abrir(i)));
+            document.getElementById('lb-close').addEventListener('click', fecharLb);
+            document.getElementById('lb-prev').addEventListener('click', () => abrir(atual - 1));
+            document.getElementById('lb-next').addEventListener('click', () => abrir(atual + 1));
+            lb.addEventListener('click', e => { if (e.target === lb) fecharLb(); });
+            document.addEventListener('keydown', e => {
+                if (!lb.classList.contains('is-open')) return;
+                if (e.key === 'Escape') fecharLb();
+                if (e.key === 'ArrowLeft') abrir(atual - 1);
+                if (e.key === 'ArrowRight') abrir(atual + 1);
             });
+
         });
     </script>
 </body>
+
 </html>

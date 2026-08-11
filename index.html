@@ -734,8 +734,239 @@
         }
 
         /* ============================================================
-   EXPERIÊNCIA (timeline)
+   EXPERIÊNCIA (timeline & diferenciação)
    ============================================================ */
+        .exp-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .exp-group-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            padding: .35rem .85rem;
+            border-radius: 100px;
+            background: rgba(242, 240, 236, .06);
+            color: var(--fg-dim);
+            border: 1px solid var(--line-soft);
+            margin-bottom: .8rem;
+        }
+
+        .exp-badge-current {
+            background: color-mix(in srgb, var(--accent) 15%, transparent);
+            color: var(--accent);
+            border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .4;
+                transform: scale(0.85);
+            }
+        }
+
+        .exp-title {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+            color: var(--fg);
+            margin-bottom: .6rem;
+        }
+
+        .exp-cities-summary {
+            font-size: .95rem;
+            color: var(--fg-dim);
+            line-height: 1.5;
+            padding: .75rem 1.1rem;
+            background: rgba(255, 255, 255, .03);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            margin-top: .6rem;
+        }
+
+        .exp-cities-summary span {
+            color: var(--fg);
+            font-weight: 500;
+        }
+
+        /* Divisor com Seta ↓ */
+        .exp-transition {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding-block: 1rem;
+        }
+
+        .exp-transition-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--line), transparent);
+        }
+
+        .exp-arrow-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-2);
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .3);
+            transition: transform .3s var(--ease), border-color .3s var(--ease);
+        }
+
+        .exp-transition:hover .exp-arrow-box {
+            transform: translateY(4px);
+            border-color: var(--accent);
+        }
+
+        /* Card da Atuação em Gestão (Atual) - Destaque sutil para São Raimundo Nonato */
+        .exp-current-card {
+            background: radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%), color-mix(in srgb, var(--bg-2) 93%, var(--accent) 7%);
+            border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+            border-radius: 16px;
+            padding: clamp(1.8rem, 4vw, 3rem);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+            transition: border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
+        }
+
+        .exp-current-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+            box-shadow: 0 14px 40px rgba(0, 0, 0, .28);
+            transform: translateY(-2px);
+        }
+
+        .exp-current-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), transparent);
+        }
+
+        .exp-current-header-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-current-period {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .exp-current-city {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -.03em;
+            line-height: 1.1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .8rem;
+            background: linear-gradient(135deg, var(--fg) 65%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .city-pin-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: .28rem .7rem;
+            border-radius: 100px;
+            background: color-mix(in srgb, var(--accent) 15%, transparent);
+            color: var(--accent);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+            -webkit-text-fill-color: var(--accent);
+            vertical-align: middle;
+        }
+
+        .exp-current-desc {
+            font-size: 1.05rem;
+            color: var(--fg-dim);
+            margin-top: .4rem;
+        }
+
+        .exp-roles-pills {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .75rem;
+            margin-top: 1.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        .role-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: .5rem 1.1rem;
+            border-radius: 100px;
+            background: rgba(242, 240, 236, .05);
+            border: 1px solid var(--line);
+            font-size: .88rem;
+            font-weight: 500;
+            color: var(--fg);
+            letter-spacing: .02em;
+            transition: all .3s var(--ease);
+        }
+
+        .role-pill:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .role-separator {
+            color: var(--accent);
+            font-size: .9rem;
+        }
+
         .tl {
             border-top: 1px solid var(--line)
         }
@@ -1764,35 +1995,77 @@
                 <div class="sec-head reveal">
                     <span class="num">03</span>
                     <h2>Experiência</h2>
-                    <span class="aside">Campanhas reais</span>
+                    <span class="aside">Trajetória & Gestão</span>
                 </div>
 
-                <div class="tl">
-                    <article class="tl-item reveal">
-                        <span class="tl-year">2024</span>
-                        <h3>Santa Rosa do Piauí</h3>
-                        <p>Cobertura política municipal, do Prefeito Marlon Sousa.</p>
-                    </article>
-                    <article class="tl-item reveal" style="--d:80ms">
-                        <span class="tl-year">2024</span>
-                        <h3>Colônia do Piauí</h3>
-                        <p>Cobertura da caminhada final de campanha do Prefeito Selindo Mauro.</p>
-                    </article>
-                    <article class="tl-item reveal" style="--d:160ms">
-                        <span class="tl-year">2024</span>
-                        <h3>São Miguel do Fidalgo</h3>
-                        <p>Cobertura da carreata de campanha do Prefeito Dr. Erimar Soares.</p>
-                    </article>
-                    <article class="tl-item reveal" style="--d:240ms">
-                        <span class="tl-year">2024 / 2025</span>
-                        <h3>Paes Landim</h3>
-                        <p>Registros de posse e reuniões do Prefeito Francinaldo Moraes.</p>
-                    </article>
-                    <article class="tl-item reveal" style="--d:320ms">
-                        <span class="tl-year">2025 – Presente</span>
-                        <h3>São Raimundo Nonato</h3>
-                        <p>Marketing Político do Prefeito Rogério Castro (outubro de 2025 até o presente momento).</p>
-                    </article>
+                <div class="exp-container">
+                    <!-- BLOCO 1: CAMPANHAS ELEITORAIS -->
+                    <div class="exp-group reveal">
+
+                        <div class="tl">
+                            <article class="tl-item reveal">
+                                <span class="tl-year">2024</span>
+                                <h3>Santa Rosa do Piauí</h3>
+                                <p>Cobertura política municipal, do Prefeito Marlon Sousa.</p>
+                            </article>
+                            <article class="tl-item reveal" style="--d:80ms">
+                                <span class="tl-year">2024</span>
+                                <h3>Colônia do Piauí</h3>
+                                <p>Cobertura da caminhada final de campanha do Prefeito Selindo Mauro.</p>
+                            </article>
+                            <article class="tl-item reveal" style="--d:160ms">
+                                <span class="tl-year">2024</span>
+                                <h3>São Miguel do Fidalgo</h3>
+                                <p>Cobertura da carreata de campanha do Prefeito Dr. Erimar Soares.</p>
+                            </article>
+                            <article class="tl-item reveal" style="--d:240ms">
+                                <span class="tl-year">2024 / 2025</span>
+                                <h3>Paes Landim</h3>
+                                <p>Registros de posse e reuniões do Prefeito Francinaldo Moraes.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- DIVISOR COM SETA DE TRANSIÇÃO ↓ -->
+                    <div class="exp-transition reveal">
+                        <div class="exp-transition-line"></div>
+                        <div class="exp-arrow-box" aria-hidden="true" title="Transição para Gestão Atual">
+                            <span>↓</span>
+                        </div>
+                        <div class="exp-transition-line"></div>
+                    </div>
+
+                    <!-- BLOCO 2: ATUAÇÃO EM GESTÃO (ATUAL) -->
+                    <div class="exp-group reveal" style="--d:100ms">
+
+                        <div class="exp-current-card">
+                            <div class="exp-current-header-wrap">
+                                <span class="exp-current-period">Desde outubro de 2025 — atual</span>
+                                <h3 class="exp-current-city">
+                                    São Raimundo Nonato
+                                    <span class="city-pin-badge" title="Gestão Atual">
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none"
+                                            stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                        <span>Atual</span>
+                                    </span>
+                                </h3>
+                                <p class="exp-current-desc">Marketing Político do Prefeito Rogério Castro (outubro de
+                                    2025 até o presente momento).</p>
+                            </div>
+
+                            <div class="exp-roles-pills">
+                                <span class="role-pill">Social Media</span>
+                                <span class="role-separator">•</span>
+                                <span class="role-pill">Videomaker Mobile</span>
+                                <span class="role-separator">•</span>
+                                <span class="role-pill">Storymaker Mobile</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2030,9 +2303,11 @@
                     <p>Os resultados falam por si: <strong>todos os candidatos que confiaram no meu trabalho foram
                             eleitos prefeitos</strong>.</p>
                     <p class="quote-subtitle">E em <span>São Raimundo Nonato</span>, minha história continua.</p>
-                    <p class="quote-current">Desde outubro de 2025, atuo diretamente na comunicação do prefeito de São Raimundo Nonato, no
+                    <p class="quote-current">Desde outubro de 2025, atuo diretamente na comunicação do prefeito de São
+                        Raimundo Nonato, no
                         exercício do mandato, como Social Media, Videomaker e Storymaker Mobile.</p>
-                    <p class="quote-current">Aqui, meu trabalho vai além de uma campanha eleitoral. É acompanhar uma gestão de forma contínua,
+                    <p class="quote-current">Aqui, meu trabalho vai além de uma campanha eleitoral. É acompanhar uma
+                        gestão de forma contínua,
                         registrar entregas, transformar ações em histórias e comunicar, através do audiovisual, aquilo
                         que está sendo construído diariamente para a população.</p>
                     <p>Campanhas me ensinaram a contar histórias que conquistam. A gestão me ensinou a contar histórias
